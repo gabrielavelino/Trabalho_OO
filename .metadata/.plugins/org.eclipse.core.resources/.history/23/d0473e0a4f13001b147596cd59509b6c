@@ -1,0 +1,23 @@
+package Republica;
+
+public class Republica {
+
+	String nomeRepublica;
+	Pessoas[] cadastroPessoas ;
+	Despesas[] cadastroDespesas;
+	
+	void cadastrarPessoas() {
+		
+	}
+	
+	void cadastrarDespesas() {
+		
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
