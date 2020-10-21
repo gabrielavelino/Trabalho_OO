@@ -1,18 +1,15 @@
 package Republica;
 
-public class Pessoas {
-	String nome,
-		   email,
-		   genero;
+public class Empresas {
+
+	String nomeEmpresa,
+		   subCategoria;
+	float contaValor;
 	
-	int idade;
-	int rendimento;
-	
-	void pessoas() {
+	void empresas() {
 		
 	}
 	
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
