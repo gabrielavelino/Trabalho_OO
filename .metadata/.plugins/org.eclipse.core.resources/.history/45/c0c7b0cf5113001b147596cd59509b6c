@@ -2,9 +2,8 @@ package Republica;
 
 public class Empresas {
 
-	String 	subCategoria,
-			nomeEmpresa;
-		   
+	String nomeEmpresa,
+		   subCategoria;
 	float contaValor;
 	
 	void empresas() {

@@ -6,7 +6,7 @@ public class Pessoas {
 		   genero;
 	
 	int idade;
-	int rendimento;
+	float rendimento;
 	
 	void pessoas() {
 		

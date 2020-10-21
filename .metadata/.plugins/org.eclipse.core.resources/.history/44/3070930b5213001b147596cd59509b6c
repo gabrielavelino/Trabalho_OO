@@ -9,6 +9,9 @@ public class Despesas {
 	
 	void cadastrarEmpresa() {
 	}
+	void cadastrarContaMes() {
+		
+	}
 	void despesas() {
 		
 	}

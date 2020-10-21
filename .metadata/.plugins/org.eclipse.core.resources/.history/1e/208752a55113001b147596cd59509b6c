@@ -4,12 +4,12 @@ public class Despesas {
 	
 	int ano;
 	int mes;
-	String categoriaDespesas;
-	Empresas[] listaEmpresas;
+	String descricaoDespesas;
+	Empresas[] cadastroEmpresas;
 	
-	void cadastrarEmpresa() {
+	void cadastrarEmpresas() {
 	}
-	void despesas() {
+	void cadastrarContaMes() {
 		
 	}
 	

@@ -2,9 +2,25 @@ package Republica;
 
 public class Console {
 	
-	republica[] listaRepublica;
+	republica[] listaRepublicas;
 	
+	void criarRepublica() {
+	}
 	
+	void criarDespesa() {
+	}
+	
+	void criarPessoa() {
+	}
+	
+	void criarEmpresa() {
+	}
+	
+	void regraIgualitaria() {
+	}
+	
+	void regraProporcional() {
+	}
 	
 	
 	public static void main(String[] args) {
