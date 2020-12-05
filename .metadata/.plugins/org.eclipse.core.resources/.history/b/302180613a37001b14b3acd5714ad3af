@@ -1,0 +1,144 @@
+package Republica;
+import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Console {
+	
+	static List<republica> listarepublica ;
+	
+	boolean cadastrarrepublica(republica cadastrar) {
+		   boolean resposta = listarepublica.add(cadastrar);
+		   return resposta;
+			
+		}
+	
+	public String toString3() {
+		String retorno = ""; 
+		
+		Iterator<republica> it = listarepublica.iterator();
+		while (it.hasNext()) {
+			republica rep = it.next();
+			retorno += "REPUBLICA: " + 	rep.getNomeRepublica() + "\n";
+		}
+		
+		return retorno;
+	}
+	
+	static Scanner ler = new Scanner(System.in);
+	
+	
+	
+	void criarRepublica() {
+	}
+	
+	void criarDespesa() {
+	}
+	
+	void criarPessoa() {
+	}
+	
+	void criarEmpresa() {
+	}
+	
+	void regraIgualitaria() {
+	}
+	
+	void regraProporcional() {
+	}
+
+	static Scanner sc = new Scanner(System.in);
+	
+	
+	
+	public static void main(String[] args) {
+
+		listarepublica = new LinkedList<republica>();
+		
+		Console c = new Console();
+		
+		/*
+		republica r = new republica("Delta");
+		c.cadastrarrepublica(r);
+		
+		System.out.println("----- BEM VINDO ------");
+		// CADASTRO PESSOAS
+		Pessoas a1 = new Pessoas("andre", "andrelanna@unb.br","M",20,500.0);
+		r.cadastrarPessoas(a1);
+		
+		Pessoas a2 = new Pessoas("Italo Rasteira", "serrinha@unb.br","Female",16,1000.0);
+		r.cadastrarPessoas(a2);
+		
+		System.out.println(r.toString());
+		
+		//CADASTRO DESPESA
+		Despesas d = new Despesas(2020,12,"Telecomunicaçao",5000.20);
+		r.cadastrarDespesas(d);
+		
+		Despesas d2 = new Despesas(2020,12,"Residencia",2730.32);
+		r.cadastrarDespesas(d2);
+		
+		System.out.println(r.toString2());
+		
+		Empresas e = new Empresas("internet", "NET", 50.50);
+		d.cadastrarEmpresas(e);
+		
+		System.out.println(d.toString());
+		*/
+		
+		
+		
+		System.out.println("----- BEM VINDO ------");
+		
+		while(true){
+		
+		System.out.println("O que voce deseja fazer?");
+		System.out.println("0 cadastrar uma republica");
+		System.out.println("1 ver lista de republicas");
+		System.out.println("2 para sair do progama");
+		
+		int selecionado = sc.nextInt();
+		
+		if(selecionado == 0){
+			Iterator<republica> it = listarepublica.iterator();
+			System.out.println("Digite o nome da nova republica");
+			String nomeRepublica = sc.next();
+			republica r1 = new republica(nomeRepublica);
+			c.cadastrarrepublica(r1);
+			//republica r1 = it.next();
+			System.out.println("Republica cadastrada\n\n");
+		}
+		
+		if(selecionado == 1){
+			Iterator<republica> it = listarepublica.iterator();	
+			if(it.hasNext() == false){
+				System.out.println("Nenhuma republica cadastrada");
+			}
+			
+			System.out.println(c.toString3());
+			System.out.println("Escolha a republica");
+			String Nome = sc.next();
+			
+			
+			while (it.hasNext()) {
+
+				System.out.println("entrou no while");
+				republica rep = it.next();
+				if(rep.getNomeRepublica() == Nome){
+					System.out.println("deu certo");
+				}
+			}
+		
+		}
+		
+		if(selecionado == 2){
+			System.out.println("voce saiu do progama");
+			break;
+			
+		}
+		
+		}
+	}
+
+}

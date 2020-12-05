@@ -5,14 +5,13 @@ public class Empresas {
 	String 	subCategoria,
 			nomeEmpresa;
 		   
-	float contaValor;
+	double contaValor;
 	
-	public Empresas(String despesa, String empresa, float valor) {
+	public Empresas(String subCategoria, String nomeEmpresa, double contaValor) {
 		
-		this.subCategoria = despesa;
-		this.nomeEmpresa = empresa;
-		this.contaValor = valor;
-		
+		this.subCategoria = subCategoria;
+		this.nomeEmpresa = nomeEmpresa;
+		this.contaValor = contaValor;
 		
 		
 	}
@@ -28,25 +27,17 @@ public class Empresas {
 		return subCategoria;
 	}
 
-	public void setSubCategoria(String subCategoria) {
-		this.subCategoria = subCategoria;
-	}
 
 	public String getNomeEmpresa() {
 		return nomeEmpresa;
 	}
 
-	public void setNomeEmpresa(String nomeEmpresa) {
-		this.nomeEmpresa = nomeEmpresa;
-	}
 
-	public float getContaValor() {
+
+	public double getContaValor() {
 		return contaValor;
 	}
 
-	public void setContaValor(float contaValor) {
-		this.contaValor = contaValor;
-	}
 	
 	
 }

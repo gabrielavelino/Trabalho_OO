@@ -17,12 +17,12 @@ public class republica {
 		listaDespesas = new LinkedList<Despesas>();
 				
 	}
-
-	/*boolean matricularAluno (Aluno matricular) {
-		boolean resposta = alunos.add(matricular);
-		return resposta;
-	}*/
 	
+	public String getNomeRepublica() {
+		return nomeRepublica;
+	}
+
+
 	boolean cadastrarPessoas(Pessoas cadastrar) {
 	   boolean resposta = listaPessoas.add(cadastrar);
 	   return resposta;
@@ -41,7 +41,6 @@ public class republica {
 		retorno += "REPUBLICA: " + this.nomeRepublica + "\n\n"; 
 		
 		Iterator<Pessoas> it = listaPessoas.iterator();
-		int i = 1;
 		while (it.hasNext()) {
 			Pessoas a = it.next();
 			retorno += "!!MORADOR!!" + "\nNOME: " + a.getNome() + "\nGENERO: " + a.getGenero() + "\nIDADE: " + a.getIdade() + "\nRENDA: R$" + a.getRendimento() + "\nE-MAIL: " + a.getEmail() + "\n\n";
@@ -55,7 +54,6 @@ public class republica {
 		
 		
 		Iterator<Despesas> it = listaDespesas.iterator();
-		int i = 1;
 		while (it.hasNext()) {
 			Despesas b = it.next();
 			retorno2 += "!!DESPESAS DA CASA!!\n" + "DATA: " + b.getMes() + '/' + b.getAno() + "\nCATEGORIA: " + b.getCategoriaDespesa() + "\nCUSTO TOTAL: R$" + b.getTotalDespesa() + "\n\n";
@@ -63,6 +61,19 @@ public class republica {
 		
 		return retorno2;
 	}
+	/*public String toGet4() {
+		String retorno3 = ""; 
+		
+		
+		Iterator<Despesas> it = listaDespesas.iterator();
+		while (it.hasNext()) {
+			Despesas b = it.next();
+			retorno3 += b.getCategoriaDespesa();
+		}
+		
+		return retorno3;
+	}*/
+	
 	
 	
 	
