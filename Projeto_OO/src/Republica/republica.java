@@ -61,19 +61,60 @@ public class republica {
 		
 		return retorno2;
 	}
-	/*public String toGet4() {
+	
+	public String toGet4(String teste) {
 		String retorno3 = ""; 
 		
 		
 		Iterator<Despesas> it = listaDespesas.iterator();
 		while (it.hasNext()) {
 			Despesas b = it.next();
-			retorno3 += b.getCategoriaDespesa();
+			if(b.getCategoriaDespesa().equalsIgnoreCase(teste))
+			retorno3 = b.getCategoriaDespesa();
+			
 		}
 		
 		return retorno3;
-	}*/
+	}
 	
+	
+	boolean retirarPessoa(String email) {
+		
+		boolean resposta = false;
+		
+		//iterator = referencia para "varrer" a lista 
+		Iterator<Pessoas> it = listaPessoas.iterator();
+		//Enquanto tiver uma proxima pessoa a ser "varrida"
+		while (it.hasNext()) {
+			//pega o proxumo elemento
+			Pessoas temp = it.next();
+			//verifica se é o elemento desejado
+			if (temp.getEmail().equalsIgnoreCase(email))
+				//se for, removo o elemento da lista.
+				resposta = listaPessoas.remove(temp);
+		}
+		
+		return resposta;
+	}
+	
+	boolean retirarDespesa(String categoriaDespesas, int mes, int ano) {
+		
+		boolean resposta = false;
+		
+		//iterator = referencia para "varrer" a lista 
+		Iterator<Despesas> it = listaDespesas.iterator();
+		//Enquanto tiver uma proxima pessoa a ser "varrida"
+		while (it.hasNext()) {
+			//pega o proxumo elemento
+			Despesas temp = it.next();
+			//verifica se é o elemento desejado
+			if (temp.getCategoriaDespesa().equalsIgnoreCase(categoriaDespesas) && temp.getMes() == mes && temp.getAno() == ano)
+				//se for, removo o elemento da lista.
+				resposta = listaDespesas.remove(temp);
+		}
+		
+		return resposta;
+	}
 	
 	
 	

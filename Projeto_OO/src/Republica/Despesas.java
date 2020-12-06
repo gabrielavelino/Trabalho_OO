@@ -30,7 +30,7 @@ public class Despesas {
 			
 		}
 	
-	public String toString() {
+	public String toStringEmpresa() {
 		String retorno = ""; 
 		retorno += "TIPO DE DESPESA: " + this.categoriaDespesas + "\n\n"; 
 		
