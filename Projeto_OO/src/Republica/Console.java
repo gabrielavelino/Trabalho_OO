@@ -140,7 +140,7 @@ public class Console {
 					/////////////////////////////////ARRUMAR (CASO A REPUBLICA SELECIONADA N EXITIR) //////////////////////////////
 					else{
 					System.out.println(c.toString3());
-					System.out.println("Escolha a republica");
+					System.out.println("Escolha a republica: ");
 					String Nome = sc.nextLine();
 					Nome = sc.nextLine();
 					
@@ -426,6 +426,16 @@ public class Console {
 							
 							}
 						}
+						
+						else {
+							
+							System.out.println("Nome invalido!!\n");
+							
+						}
+						
+						
+						
+						
 					}
 				
 				}
