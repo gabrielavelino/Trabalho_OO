@@ -115,7 +115,29 @@ public class republica {
 		
 		return resposta;
 	}
+
 	
+	public boolean verificar_lista_vaziap() {
+		
+	Iterator<Pessoas> it = listaPessoas.iterator();
+
+	
+	if(it.hasNext() == false)
+		return false;
+	else
+		return true;
+	}
+
+	public boolean verificar_lista_vaziad() {
+		
+		Iterator<Despesas> it = listaDespesas.iterator();
+
+		
+		if(it.hasNext() == false)
+			return false;
+		else
+			return true;
+	}
 	
 	
 

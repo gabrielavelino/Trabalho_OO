@@ -21,7 +21,7 @@ public class Console {
 		Iterator<republica> it = listarepublica.iterator();
 		while (it.hasNext()) {
 			republica rep = it.next();
-			retorno += "REPUBLICA: " + 	rep.getNomeRepublica() + "\n";
+			retorno += "Republica: " + 	rep.getNomeRepublica() + "\n";
 		}
 		
 		return retorno;
@@ -96,12 +96,12 @@ public class Console {
 		
 		System.out.println(d.toString());
 		*/
+		//aosivanosdvinasodvansvaspvasnfjspd
+		//ATE AQUI
+		System.out.println("----- BEM VINDO AO PROGRAMA DE CADASTRO DE REPUBLICAS ------");
 		
-		boolean repeat = true;
-		while(repeat) {
-		try {
+		int selecionado = -1;
 			while(true){
-				System.out.println("----- BEM VINDO AO PROGRAMA DE CADASTRO DE REPUBLICAS ------");
 				System.out.println("\n");	
 				System.out.println("O que voce deseja fazer?\n");
 				System.out.println("(1) cadastrar uma republica.");
@@ -109,28 +109,43 @@ public class Console {
 				System.out.println("(3) Retirar republica.");
 				System.out.println("(0) para sair do progama!");
 				
-				int selecionado = sc.nextInt();
+				try {
+				selecionado =  Integer.parseInt(sc.next());;
+				
+				}catch(NumberFormatException e){
+				
+					System.out.println("Operador invalido...!\n");
+					selecionado = -1;
+					
+					
+				}
+				
 				// CADASTRAR UMA NOVA REPUBLICA
 				if(selecionado == 1){
-					Iterator<republica> it = listarepublica.iterator();
 					System.out.println("Digite o nome da nova republica");
-					String nomeRepublica = sc.next();
+					String nomeRepublica = sc.nextLine();
+					nomeRepublica = sc.nextLine();
 					republica r1 = new republica(nomeRepublica);
 					c.cadastrarrepublica(r1);
 					System.out.println("Republica cadastrada!");
 				}
 				// IMPRIMINDO LISTA DE REPUBLICAS CADASTRADAS
-				if(selecionado == 2){
+				else if(selecionado == 2){
 					Iterator<republica> it = listarepublica.iterator();	
+					//CASO NAO TENHA NENHUMA REPUBLICA CADASTRADA
 					if(it.hasNext() == false){
-						System.out.println("Nenhuma republica cadastrada");
+						System.out.println("Nenhuma republica cadastrada ainda");
 					}
-					
+
+					/////////////////////////////////ARRUMAR (CASO A REPUBLICA SELECIONADA N EXITIR) //////////////////////////////
+					else{
 					System.out.println(c.toString3());
 					System.out.println("Escolha a republica");
-					String Nome = sc.next();
+					String Nome = sc.nextLine();
+					Nome = sc.nextLine();
 					
-					
+					//MENU CADASTROS DE PESSOAS E DESPESAS
+					int selecionado1 = -1;
 					while (it.hasNext()) {
 
 						republica rep = it.next();
@@ -150,45 +165,144 @@ public class Console {
 							System.out.println("(6) Retirar despesas.");
 							System.out.println("(0) voltar para o menu principal!");
 							
-							int selecionado1 = sc.nextInt();
+							try {
+								selecionado1 =  Integer.parseInt(sc.next());;
+								
+								}catch(NumberFormatException e){
+								
+									System.out.println("Operador invalido...!\n");
+									selecionado1 = -1;
+									
+									
+								}
 							// CADASTRO DE PESSOAS
 							if(selecionado1 == 1){
 								System.out.println("Digite o nome da nova pessoa");
-								String Nomepessoa = sc.next();
+								String Nomepessoa = sc.nextLine();
+								Nomepessoa = sc.nextLine();
 								System.out.println("Digite o email da nova pessoa");
 								String Email = sc.next();
 								System.out.println("Digite o genero da nova pessoa");
 								String genero = sc.next();
 								System.out.println("Digite a idade da nova pessoa");
-								int idade = sc.nextInt();
+								int idade = -1;
+								double rendimento = -1;
+								boolean repeat_idade = true;
+								while(repeat_idade){
+								try {
+									idade =  Integer.parseInt(sc.next());;
+									repeat_idade = false;
+									
+									}catch(NumberFormatException e){
+									
+										System.out.println("Operador invalido... Digite a idade novamente\n");
+										idade = -1;
+										repeat_idade = true;
+										
+									}
+								}
 								System.out.println("Digite o rendimento da nova pessoa");
-								double rendimento = sc.nextDouble();
+								
+
+								boolean repeat_rendimento = true;
+								while(repeat_rendimento){
+								try {
+									rendimento =  Double.parseDouble(sc.next());;
+
+									repeat_rendimento = false;
+									
+									}catch(NumberFormatException e){
+									
+										System.out.println("Operador invalido... Digite o rendimento novamente!\n");
+										rendimento = -1;
+										repeat_rendimento = true;
+										
+									}	
+									}
+								
 								Pessoas p = new Pessoas(Nomepessoa, Email, genero, idade, rendimento);
 								rep.cadastrarPessoas(p);
 								System.out.println("Pessoa cadastrada\n\n");
 							}
-							
-							if(selecionado1 == 2){
+							//LISTA DE PESSOAS
+							else if(selecionado1 == 2){	
+								if(rep.verificar_lista_vaziap() == false){
+									System.out.println("Nenhuma pessoa cadastrada ainda\n");
+								}
+								else
 								System.out.println(rep.toString());
 							}
 							// CADASTRO DA DESPESA
-							if(selecionado1 == 3){
-								System.out.println("Digite o mes e o ano");
-								int mes = sc.nextInt();
-								int ano = sc.nextInt();
+							else if(selecionado1 == 3){
+								System.out.println("Digite o mes");
+								int mes = -1;
+								int ano = -1;
+								
+								boolean repeat_mes = true;
+								while(repeat_mes){
+									try {
+										mes =  Integer.parseInt(sc.next());;
+										repeat_mes = false;
+										
+										}catch(NumberFormatException e){
+										
+											System.out.println("Operador invalido... Digite o mes novamente\n");
+											mes = -1;
+											repeat_mes = true;
+											
+										}
+									}
+
+								System.out.println("Digite o ano");
+								boolean repeat_ano = true;
+								while(repeat_ano){
+									try {
+										ano =  Integer.parseInt(sc.next());;
+										repeat_ano = false;
+										
+										}catch(NumberFormatException e){
+										
+											System.out.println("Operador invalido... Digite o ano novamente\n");
+											ano = -1;
+											repeat_ano = true;
+											
+										}
+									}
+								
 								System.out.println("Digite a categoria");
-								String categoria = sc.next();
+								String categoria = sc.nextLine();
+								categoria = sc.nextLine();
 								System.out.println("Digite o custo total");
-								double total = sc.nextDouble();
+								double total = -1;
+								
+								boolean repeat_total = true;
+								while(repeat_total){
+								try {
+									total=  Double.parseDouble(sc.next());;
+
+									repeat_total = false;
+									
+									}catch(NumberFormatException e){
+									
+										System.out.println("Operador invalido... Digite o custo total novamente!\n");
+										total = -1;
+										repeat_total = true;
+										
+									}	
+									}
+								
 								Despesas d = new Despesas(mes, ano, categoria, total);
 								rep.cadastrarDespesas(d);
 								System.out.println("Despesa cadastrada\n\n");
 							}
 							
 							// ENTRA NO MENU DAS EMPRESAS / VER DESPESAS
-							 if(selecionado1 == 4){
-
-								
+							else if(selecionado1 == 4){	
+								if(rep.verificar_lista_vaziad() == false){
+									System.out.println("Nenhuma despesa cadastrada ainda\n");
+								}
+								/////////////////////////////////ARRUMAR (COLOCAR EMPRESAS) //////////////////////////////
+								else
 								System.out.println(rep.toString2());
 							/*	System.out.println("Escolha a Categoria da despesa desejada: ");
 								String teste = sc.next();
@@ -238,31 +352,76 @@ public class Console {
 								
 							*/	
 							}
-							
-							if(selecionado1 == 5) {
-								System.out.println("Digite o e-mail da pessoas a ser retirada: ");
-								String email_tirado = sc.next();
-								rep.retirarPessoa(email_tirado);
-								System.out.println("Pessoa retirada!");
-								
+							//RETIRAR PESSOA
+							/////////////////////////////////ARRUMAR (CASO O EMAIL DIGITADO N EXISTA) //////////////////////////////
+							else if(selecionado1 == 5) {
+								if(rep.verificar_lista_vaziap() == false){
+									System.out.println("Nenhuma pessoa cadastrada ainda\n");
+								}
+								else{
+									System.out.println("Digite o e-mail da pessoas a ser retirada: ");
+									String email_tirado = sc.next();
+									rep.retirarPessoa(email_tirado);
+									System.out.println("Pessoa retirada!");
+								}
 							}
-							
-							if(selecionado1 == 6) {
-								System.out.println("Digite a categoria a ser retirada: ");
-								String categoria_retirado = sc.next();
-								System.out.println("Digite a data da despesa (mes e ano) : ");
-								int mes_retirado = sc.nextInt();
-								int ano_retirado = sc.nextInt();
-								rep.retirarDespesa(categoria_retirado,mes_retirado,ano_retirado);
-								System.out.println("Despesa retirada!");
-								
+							//RETIRAR DESPESA
+							/////////////////////////////////ARRUMAR (CASO O CATEGORIA DIGITADO N EXISTA) //////////////////////////////
+							else if(selecionado1 == 6) {
+								if(rep.verificar_lista_vaziad() == false){
+									System.out.println("Nenhuma despesa cadastrada ainda\n");
+								}
+								else{
+									System.out.println("Digite a categoria a ser retirada: ");
+									String categoria_retirado = sc.next();
+									System.out.println("Digite o mes da despesa a ser retirada : ");
+									int mes_retirado = -1;
+									int ano_retirado = -1;
+									
+									boolean repeat_mes_retirado = true;
+									while(repeat_mes_retirado){
+										try {
+											mes_retirado =  Integer.parseInt(sc.next());;
+											repeat_mes_retirado = false;
+											
+											}catch(NumberFormatException e){
+											
+												System.out.println("Operador invalido... Digite o mes novamente\n");
+												mes_retirado = -1;
+												repeat_mes_retirado = true;
+												
+											}
+										}
+									System.out.println("Digite o ano da despesa a ser retirada : ");
+									
+									boolean repeat_ano_retirado = true;
+									while(repeat_ano_retirado){
+										try {
+											ano_retirado =  Integer.parseInt(sc.next());;
+											repeat_ano_retirado = false;
+											
+											}catch(NumberFormatException e){
+											
+												System.out.println("Operador invalido... Digite o mes novamente\n");
+												ano_retirado = -1;
+												repeat_ano_retirado = true;
+												
+											}
+										}
+									
+									rep.retirarDespesa(categoria_retirado,mes_retirado,ano_retirado);
+									System.out.println("Despesa retirada!");
+								}
 							}
 							
 							
 							
 							// SAIR MENU CADASTROS 
-							if(selecionado1 == 0){
+							else if(selecionado1 == 0){
 								break;
+							}
+							else{
+								System.out.println("!!Escolha outra opçao!!\n");
 							}
 							
 							}
@@ -270,36 +429,35 @@ public class Console {
 					}
 				
 				}
-				
-				if(selecionado == 3) {
-					System.out.println("Digite o nome da republica a ser retirada: ");
-					String rep_tirado = sc.next();
-					c.retirarRepublica(rep_tirado);
-					System.out.println("Republica retirada!");
-					
+				}
+				// REMOVER REPUBLICA
+				/////////////////////////////////ARRUMAR (CASO A REPUBLICA DIGITADO N EXISTA) //////////////////////////////
+				else if(selecionado == 3) {
+
+					Iterator<republica> it = listarepublica.iterator();	
+					if(it.hasNext() == false){
+						System.out.println("Nenhuma republica cadastrada ainda");
+					}
+					else{
+						System.out.println("Digite o nome da republica a ser retirada: ");
+						String rep_tirado = sc.nextLine();
+						rep_tirado = sc.nextLine();
+						c.retirarRepublica(rep_tirado);
+						System.out.println("Republica retirada!");
+					}
 				}
 				
 				
 				
 				// SAIR DO PROGRAMA
-				if(selecionado == 0){
+				else if(selecionado == 0){
 					System.out.println("!!VOLTE SEMPRE!!");
 					break;
 					
 				}
-				
+				else{
+					System.out.println("!!Escolha outra opçao!!");
 				}
-			repeat = false;
-			
-		}catch(NumberFormatException e){
-		
-			System.out.println("Operador invalido... tente novamente!");
-			repeat = true;
-			
-			
-		}
-		
-		
 		}
 		
 	}
