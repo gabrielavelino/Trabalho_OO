@@ -448,7 +448,7 @@ public class Console {
 									
 									}catch(NumberFormatException e){
 									
-										System.out.println("Operador invalido... Digite o custo novamente!\n");
+										System.out.println("Operador invalido... Digite o custo total novamente!\n");
 										System.out.println("exemplo : 130.50\n");
 										custo = -1;
 										repeat_custo = true;
