@@ -19,15 +19,6 @@ public class Pessoas {
 		this.rendimento = rendimento;	
 		
 	}
-	
-	public String toString() {
-		return "NOME: " + nome + "\n" +
-			   "E-MAIL: " + email + "\n" +
-			   "GENERO: " + genero + "\n" + 
-			   "IDADE: " + idade + "\n" +
-			   "RENDIMENTO: " + rendimento;
-		
-	}
 
 	public String getNome() {
 		return nome;

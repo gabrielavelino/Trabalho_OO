@@ -9,12 +9,14 @@ public class republica {
 	String nomeRepublica;
 	List<Pessoas> listaPessoas ;
 	List<Despesas> listaDespesas;
+	List<Empresas> listaEmpresas;
 	
 	public republica(String nomeRepublica){
 		this.nomeRepublica = nomeRepublica;
 	
 		listaPessoas = new LinkedList<Pessoas>();
 		listaDespesas = new LinkedList<Despesas>();
+		listaEmpresas = new LinkedList<Empresas>();
 				
 	}
 	
@@ -34,6 +36,11 @@ public class republica {
 		return resposta2;
 		
 	}
+	boolean cadastrarEmpresas(Empresas cadastrar) {
+		   boolean resposta3 = listaEmpresas.add(cadastrar);
+		   return resposta3;
+			
+		}
 
 	
 	public String toString() {
@@ -60,6 +67,19 @@ public class republica {
 		}
 		
 		return retorno2;
+	}
+	
+	public void toStringEmpresa() {
+		System.out.println("chegou aq ");
+		
+		Iterator<Empresas> it = listaEmpresas.iterator();
+		System.out.println("chegou aq 1");
+		while (it.hasNext()) {
+			System.out.println("chegou aq 2");
+			Empresas e = it.next();
+			System.out.println( "SUBCATEGORIA: " + e.getSubCategoria() + "\nEMPRESA: " + e.getNomeEmpresa() + "\nTOTAL: " + e.getContaValor() + "\n\n");
+		}
+		
 	}
 	
 	public String toGet4(String teste) {
@@ -139,6 +159,54 @@ public class republica {
 			return true;
 	}
 	
+	public boolean verificar_despesa_existente(String teste, int t1, int t2) {
+		boolean retorno3 = false; 
+		
+		
+		Iterator<Despesas> it = listaDespesas.iterator();
+		while (it.hasNext()) {
+			Despesas b = it.next();
+			if(b.getCategoriaDespesa().equalsIgnoreCase(teste) && b.getMes()==t1 && b.getAno()==t2)
+			retorno3 = true;
+			
+		}
+		
+		return retorno3;
+	}
 	
+	public boolean verificar_pessoa_existente(String teste) {
+		boolean retorno3 = false; 
+		
+		
+		Iterator<Pessoas> it = listaPessoas.iterator();
+		while (it.hasNext()) {
+			Pessoas b = it.next();
+			if(b.getEmail().equalsIgnoreCase(teste))
+			retorno3 = true;
+			
+		}
+		
+		return retorno3;
+	}
 
+	public void lista_despesas() {
+		
+		
+		Iterator<Despesas> it = listaDespesas.iterator();
+		while (it.hasNext()) {
+			Despesas a = it.next();
+			System.out.println("-Categoria: " + a.getCategoriaDespesa() + " Data: " + a.getMes()+"/"+a.getAno());
+		}
+		
+	}
+public void lista_pessoas() {
+		
+		
+		Iterator<Pessoas> it = listaPessoas.iterator();
+		while (it.hasNext()) {
+			Pessoas a = it.next();
+			System.out.println("-Nome: " + a.getNome() + " Email: " + a.getEmail());
+		}
+		
+	}
 }

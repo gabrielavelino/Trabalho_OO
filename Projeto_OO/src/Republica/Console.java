@@ -46,7 +46,20 @@ public class Console {
 		return resposta;
 	}
 	
-	
+	public boolean verificar_republica_existente(String teste) {
+		boolean retorno3 = false; 
+		
+		
+		Iterator<republica> it = listarepublica.iterator();
+		while (it.hasNext()) {
+			republica b = it.next();
+			if(b.getNomeRepublica().equalsIgnoreCase(teste))
+			retorno3 = true;
+			
+		}
+		
+		return retorno3;
+	}
 	
 	
 	void criarEmpresa() {
@@ -67,6 +80,7 @@ public class Console {
 		listarepublica = new LinkedList<republica>();
 		
 		Console c = new Console();
+		Despesas d;
 		
 		/*
 		republica r = new republica("Delta");
@@ -137,7 +151,6 @@ public class Console {
 						System.out.println("Nenhuma republica cadastrada ainda");
 					}
 
-					/////////////////////////////////ARRUMAR (CASO A REPUBLICA SELECIONADA N EXITIR) //////////////////////////////
 					else{
 					System.out.println(c.toString3());
 					System.out.println("Escolha a republica: ");
@@ -161,8 +174,9 @@ public class Console {
 							System.out.println("(2) ver lista de pessoas.");
 							System.out.println("(3) cadastrar uma despesa.");
 							System.out.println("(4) ver lista de despesas.");
-							System.out.println("(5) Retirar Pessoas. ");
-							System.out.println("(6) Retirar despesas.");
+							System.out.println("(5) cadastrar uma empresa.");
+							System.out.println("(6) Retirar Pessoas. ");
+							System.out.println("(7) Retirar despesas.");
 							System.out.println("(0) voltar para o menu principal!");
 							
 							try {
@@ -196,6 +210,7 @@ public class Console {
 									}catch(NumberFormatException e){
 									
 										System.out.println("Operador invalido... Digite a idade novamente\n");
+										System.out.println("exemplo : 21\n");
 										idade = -1;
 										repeat_idade = true;
 										
@@ -214,6 +229,8 @@ public class Console {
 									}catch(NumberFormatException e){
 									
 										System.out.println("Operador invalido... Digite o rendimento novamente!\n");
+										System.out.println("exemplo : 130.50\n");
+										
 										rendimento = -1;
 										repeat_rendimento = true;
 										
@@ -247,6 +264,8 @@ public class Console {
 										}catch(NumberFormatException e){
 										
 											System.out.println("Operador invalido... Digite o mes novamente\n");
+											System.out.println("exemplo : 05\n");
+											
 											mes = -1;
 											repeat_mes = true;
 											
@@ -263,6 +282,8 @@ public class Console {
 										}catch(NumberFormatException e){
 										
 											System.out.println("Operador invalido... Digite o ano novamente\n");
+											System.out.println("exemplo : 2020\n");
+											
 											ano = -1;
 											repeat_ano = true;
 											
@@ -285,15 +306,53 @@ public class Console {
 									}catch(NumberFormatException e){
 									
 										System.out.println("Operador invalido... Digite o custo total novamente!\n");
+										System.out.println("exemplo : 130.50\n");
 										total = -1;
 										repeat_total = true;
 										
 									}	
 									}
 								
-								Despesas d = new Despesas(mes, ano, categoria, total);
+								d = new Despesas(mes, ano, categoria, total);
 								rep.cadastrarDespesas(d);
 								System.out.println("Despesa cadastrada\n\n");
+								
+								/*System.out.println("(1) cadastrar empresa: ");
+								System.out.println("(0) Voltar menu cadastros: ");
+								
+								int selecionado3 = sc.nextInt();
+								if(selecionado3==1){
+									
+								while(true){
+									System.out.println("(1) Cadastrar Subcategoria: ");
+									System.out.println("(2) Ver lista de Subcategorias: ");
+									System.out.println("(0) SAIR MENU DESPESAS ");
+									int selecionado4 = sc.nextInt();
+
+									if(selecionado4==1){
+									System.out.println("Digite o nome da Empresa: ");
+									String empresa = sc.next();
+									System.out.println("Digite a Subcategoria da despesa: ");
+									String subcategoria = sc.next();
+									System.out.println("Digite o custo do serviço realizado: ");
+									double serviço = sc.nextDouble();
+									Empresas e = new Empresas(subcategoria, empresa, serviço);
+									d.cadastrarEmpresas(e);
+								
+									System.out.println("Empresa cadastrada\n\n");
+									}
+									else if(selecionado4==2){
+										d.toStringEmpresa();
+									}
+									else if(selecionado4==0){
+										break;
+									}
+									else{
+										System.out.println("!!Escolha outra opçao!!");
+										
+									}
+								}
+								}*/
 							}
 							
 							// ENTRA NO MENU DAS EMPRESAS / VER DESPESAS
@@ -304,7 +363,22 @@ public class Console {
 								/////////////////////////////////ARRUMAR (COLOCAR EMPRESAS) //////////////////////////////
 								else
 								System.out.println(rep.toString2());
-							/*	System.out.println("Escolha a Categoria da despesa desejada: ");
+								/*
+								System.out.println("Ver lista de empresas desta despesa?");
+								System.out.println("(sim/nao)");
+								String selecionado5 = sc.next();
+								if(selecionado5.equalsIgnoreCase("sim")){
+									
+								}
+								else if(selecionado5.equalsIgnoreCase("nao")){
+									
+								}
+								else{
+									System.out.println("!!Escolha outra opçao!!");
+									
+								}*/
+							/*	
+								System.out.println("Escolha a Categoria da despesa desejada: ");
 								String teste = sc.next();
 								
 								Iterator<republica> it3 = listarepublica.iterator();
@@ -313,16 +387,15 @@ public class Console {
 									republica rep1 = it3.next();
 									// MENU DESPESAS PARA EMPRESAS
 									if(rep1.toGet4(teste).equalsIgnoreCase(teste)) {
-										
-										System.out.println("(1) Ver lista de Subcategorias: ");
-										System.out.println("(2) Cadastrar Subcategoria: ");
+
+										System.out.println("(1) Cadastrar Subcategoria: ");
+										System.out.println("(2) Ver lista de Subcategorias: ");
 										System.out.println("(0) SAIR MENU DESPESAS ");
 										
 										int selecionado2 = sc.nextInt();
+									
 										
-										Despesas d2 = new Despesas(2, 3, "subcategoria",3.9);
-										
-										if(selecionado2 == 2) {
+										if(selecionado2 == 1) {
 											System.out.println("Digite o nome da Empresa: ");
 											String empresa = sc.next();
 											System.out.println("Digite a Subcategoria da despesa: ");
@@ -330,15 +403,15 @@ public class Console {
 											System.out.println("Digite o custo do serviço realizado: ");
 											double serviço = sc.nextDouble();
 											Empresas e = new Empresas(subcategoria, empresa, serviço);
+											//d.cadastrarEmpresas(e);
 											
-											d2.cadastrarEmpresas(e);
 											System.out.println("Empresa cadastrada\n\n");
 									
 										}
 									
-										if(selecionado2 == 1) {
+										if(selecionado2 == 2) {
 											
-												System.out.println(d2.toStringEmpresa());
+												//d.toStringEmpresa();
 												
 											
 											
@@ -350,29 +423,78 @@ public class Console {
 								
 								}
 								
-							*/	
+							FINAL COMENTARIO  DA EMPRESA  */	
 							}
+							
+							else if(selecionado1==5){
+								System.out.println("Digite o nome da empresa");
+								
+								String nomeempresa = sc.nextLine();
+								nomeempresa = sc.nextLine();
+								System.out.println("Digite o nome da subcategoria");
+								
+								String subcategoria = sc.nextLine();
+								subcategoria = sc.nextLine();
+								System.out.println("Digite o custo da empresa");
+								
+								double custo = -1;
+								
+								boolean repeat_custo = true;
+								while(repeat_custo){
+								try {
+									custo=  Double.parseDouble(sc.next());;
+
+									repeat_custo = false;
+									
+									}catch(NumberFormatException e){
+									
+										System.out.println("Operador invalido... Digite o custo total novamente!\n");
+										System.out.println("exemplo : 130.50\n");
+										custo = -1;
+										repeat_custo = true;
+										
+									}	
+									}
+								
+								Empresas e = new Empresas(subcategoria, nomeempresa, custo);
+								rep.cadastrarEmpresas(e);
+								System.out.println("Empresa cadastrada\n\n");
+							}
+							
+					
+							
 							//RETIRAR PESSOA
-							/////////////////////////////////ARRUMAR (CASO O EMAIL DIGITADO N EXISTA) //////////////////////////////
-							else if(selecionado1 == 5) {
+							else if(selecionado1 == 6) {
 								if(rep.verificar_lista_vaziap() == false){
 									System.out.println("Nenhuma pessoa cadastrada ainda\n");
 								}
 								else{
+									System.out.println("lista de pessoas ");
+									rep.lista_pessoas();
+									
 									System.out.println("Digite o e-mail da pessoas a ser retirada: ");
 									String email_tirado = sc.next();
-									rep.retirarPessoa(email_tirado);
-									System.out.println("Pessoa retirada!");
+
+									if(rep.verificar_pessoa_existente(email_tirado)==false){
+										System.out.println("Pessoa nao encontrada!\n");
+									}
+									else{
+										rep.retirarPessoa(email_tirado);
+										System.out.println("Pessoa retirada!\n");
+									}
 								}
 							}
 							//RETIRAR DESPESA
-							/////////////////////////////////ARRUMAR (CASO O CATEGORIA DIGITADO N EXISTA) //////////////////////////////
-							else if(selecionado1 == 6) {
+							else if(selecionado1 == 7) {
 								if(rep.verificar_lista_vaziad() == false){
 									System.out.println("Nenhuma despesa cadastrada ainda\n");
 								}
 								else{
+
+									System.out.println("lista de despesas ");
+									rep.lista_despesas();
 									System.out.println("Digite a categoria a ser retirada: ");
+									
 									String categoria_retirado = sc.next();
 									System.out.println("Digite o mes da despesa a ser retirada : ");
 									int mes_retirado = -1;
@@ -408,9 +530,13 @@ public class Console {
 												
 											}
 										}
-									
-									rep.retirarDespesa(categoria_retirado,mes_retirado,ano_retirado);
-									System.out.println("Despesa retirada!");
+									if(rep.verificar_despesa_existente(categoria_retirado, mes_retirado, ano_retirado)==false){
+										System.out.println("Despesa nao encontrada!\n");
+									}
+									else{
+										rep.retirarDespesa(categoria_retirado,mes_retirado,ano_retirado);
+										System.out.println("Despesa retirada!\n");
+									}
 								}
 							}
 							
@@ -441,19 +567,29 @@ public class Console {
 				}
 				}
 				// REMOVER REPUBLICA
-				/////////////////////////////////ARRUMAR (CASO A REPUBLICA DIGITADO N EXISTA) //////////////////////////////
 				else if(selecionado == 3) {
 
 					Iterator<republica> it = listarepublica.iterator();	
 					if(it.hasNext() == false){
-						System.out.println("Nenhuma republica cadastrada ainda");
+						System.out.println("Nenhuma republica cadastrada ainda\n");
 					}
+					
 					else{
 						System.out.println("Digite o nome da republica a ser retirada: ");
+						Iterator<republica> it4 = listarepublica.iterator();	
+						while (it4.hasNext()) {
+							republica a = it4.next();
+							System.out.println("-"+a.getNomeRepublica());
+						}
 						String rep_tirado = sc.nextLine();
 						rep_tirado = sc.nextLine();
-						c.retirarRepublica(rep_tirado);
-						System.out.println("Republica retirada!");
+						if(c.verificar_republica_existente(rep_tirado)==false){
+							System.out.println("Republica nao encontrada!\n");
+						}
+						else{
+							c.retirarRepublica(rep_tirado);
+							System.out.println("Republica retirada!\n");
+						}
 					}
 				}
 				

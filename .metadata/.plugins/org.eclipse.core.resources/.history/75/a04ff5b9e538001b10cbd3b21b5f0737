@@ -1,0 +1,66 @@
+package Republica;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Despesas {
+	
+	int ano;
+	int mes;
+	String categoriaDespesas;
+	double totalDespesa;
+	List<Empresas> listaEmpresas;
+	
+	
+	
+	public Despesas(int mes, int ano, String categoriaDespesas, double totalDespesa) {
+		this.ano = ano;
+		this.mes = mes;
+		this.categoriaDespesas = categoriaDespesas;
+		this.totalDespesa = totalDespesa;
+
+		listaEmpresas = new LinkedList<Empresas>();
+		
+	}
+	
+	boolean cadastrarEmpresas(Empresas cadastrar) {
+		   boolean resposta3 = listaEmpresas.add(cadastrar);
+		   return resposta3;
+			
+		}
+	
+	public void toStringEmpresa() {
+		System.out.println("chegou aq ");
+		
+		Iterator<Empresas> it = listaEmpresas.iterator();
+		System.out.println("chegou aq 1");
+		while (it.hasNext()) {
+			System.out.println("chegou aq 2");
+			Empresas e = it.next();
+			System.out.println( "SUBCATEGORIA: " + e.getSubCategoria() + "\nEMPRESA: " + e.getNomeEmpresa() + "\nTOTAL: " + e.getContaValor() + "\n\n">;
+		}
+		
+	}
+
+
+	public int getAno() {
+		return ano;
+	}
+
+
+
+	public int getMes() {
+		return mes;
+	}
+
+	public String getCategoriaDespesa() {
+		return categoriaDespesas;
+	}
+
+	public double getTotalDespesa() {
+		return totalDespesa;
+	}
+
+
+}

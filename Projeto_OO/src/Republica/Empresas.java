@@ -16,7 +16,7 @@ public class Empresas {
 		
 	}
 
-	public String toString() {
+	public String lista_empresas() {
 		return "EMPRESA: " + nomeEmpresa + "\n" +
 			   "CATEGORIA: " + subCategoria + "\n" +
 				"VALOR: " + contaValor;
