@@ -195,7 +195,7 @@ public class republica {
 		Iterator<Despesas> it = listaDespesas.iterator();
 		while (it.hasNext()) {
 			Despesas a = it.next();
-			System.out.println("-Categoria: " + a.getCategoriaDespesa() + " Data: " + a.getMes()+"/"+a.getAno());
+			System.out.println("- Categoria: " + a.getCategoriaDespesa() + " // Data: " + a.getMes()+"/"+a.getAno());
 		}
 		
 	}
@@ -205,10 +205,62 @@ public void lista_pessoas() {
 		Iterator<Pessoas> it = listaPessoas.iterator();
 		while (it.hasNext()) {
 			Pessoas a = it.next();
-			System.out.println("-Nome: " + a.getNome() + " Email: " + a.getEmail());
+			System.out.println("- Nome: " + a.getNome() + " // Email: " + a.getEmail() + " // Idade: " + a.getIdade() +" // Genero: " + a.getGenero());
 		}
 		
 	}
+
+public double soma_rendaPessoas() {
+	double total_rendaPessoa = 0;	
+	Iterator<Pessoas> it = listaPessoas.iterator();
+	while (it.hasNext()) {
+		Pessoas a = it.next();
+		total_rendaPessoa += a.getRendimento();
+	
+	}
+	
+	return total_rendaPessoa;
+}
+
+public String renda_indi(double rend_despesa, double rend_pessoa) {
+	String retorno = "";
+	//double total_rendaPessoa = 0;	
+	Iterator<Pessoas> it = listaPessoas.iterator();
+	while (it.hasNext()) {
+		Pessoas a = it.next();
+		retorno += "Nome: " +  a.getNome() + " // total a pagar: " + (a.getRendimento()/rend_pessoa)*rend_despesa + "\n";
+	
+	}
+	
+	return retorno;
+}
+
+
+public int numeroDePessoas() {
+	int total_pessoas = 0;	
+	Iterator<Pessoas> it = listaPessoas.iterator();
+	while (it.hasNext()) {
+		Pessoas a = it.next();
+		total_pessoas ++;
+	
+	}
+	
+	return total_pessoas;
+}
+
+
+public double soma_despesaTotal() {
+	double total_despesa = 0;	
+	Iterator<Despesas> it = listaDespesas.iterator();
+	while (it.hasNext()) {
+		Despesas a = it.next();
+		total_despesa += a.getTotalDespesa();
+	
+	}
+	
+	return total_despesa;
+}
+
 
 public void lista_empresas() {
 	
@@ -216,7 +268,7 @@ public void lista_empresas() {
 	Iterator<Empresas> it = listaEmpresas.iterator();
 	while (it.hasNext()) {
 		Empresas a = it.next();
-		System.out.println("-Subcategoria: " + a.getSubCategoria() + " Empresa: " +a.getNomeEmpresa()+"Custo: "+a.getContaValor());
+		System.out.println("- Subcategoria: " + a.getSubCategoria() + " // Empresa: " +a.getNomeEmpresa()+" // Custo: "+a.getContaValor());
 	}
 	
 }

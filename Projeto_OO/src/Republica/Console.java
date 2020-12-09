@@ -75,13 +75,18 @@ public class Console {
 
 	static Scanner sc = new Scanner(System.in);
 	
-	
+	//-------------------------------------------- FUNÇAO MAIN ---------------------------------------------------------
 	
 	public static void main(String[] args) {
 
 		listarepublica = new LinkedList<republica>();
 		
 		Console c = new Console();
+		
+		double rend_pessoa = 0;
+		double rend_despesa = 0;
+		int tot_pessoa = 0;
+		
 		/*
 		republica r = new republica("Delta");
 		c.cadastrarrepublica(r);
@@ -117,11 +122,13 @@ public class Console {
 		int selecionado = -1;
 			while(true){
 				System.out.println("\n");	
+				System.out.println("------------------------------------------");
 				System.out.println("O que voce deseja fazer?\n");
 				System.out.println("(1) cadastrar uma republica.");
 				System.out.println("(2) ver lista de republicas.");
 				System.out.println("(3) Retirar republica.");
 				System.out.println("(0) para sair do progama!");
+				System.out.println("------------------------------------------");
 				
 				try {
 				selecionado =  Integer.parseInt(sc.next());;
@@ -169,6 +176,7 @@ public class Console {
 							
 							while(true){
 							// DENTRO DA REPUBLICA ESCOLHIDA
+							System.out.println("------------------------------------------");
 							System.out.println("O que voce deseja fazer?");
 							System.out.println("(1) cadastrar uma pessoa.");
 							System.out.println("(2) ver lista de pessoas.");
@@ -179,7 +187,7 @@ public class Console {
 							System.out.println("(7) Retirar despesas.");
 							System.out.println("(8) Ver status da republica.");
 							System.out.println("(0) voltar para o menu principal!");
-							
+							System.out.println("------------------------------------------");
 							try {
 								selecionado1 =  Integer.parseInt(sc.next());;
 								
@@ -428,7 +436,7 @@ public class Console {
 								
 							FINAL COMENTARIO  DA EMPRESA  */	
 							}
-							
+							// CADASTRO DAS EMPRESAS
 							else if(selecionado1==5){
 								System.out.println("Digite o nome da empresa");
 								
@@ -542,17 +550,38 @@ public class Console {
 								}
 							}
 							
+							// VER STATUS DA REPUBLICA ESCOLHIDA
 							else if(selecionado1 == 8){	
-								System.out.println("lista de pessoas ");
+								System.out.println("lista de pessoas: ");
 								rep.lista_pessoas();
 								
-								System.out.println("lista de despesas ");
+								System.out.println("\nlista de despesas: ");
 								rep.lista_despesas();
 								
-								System.out.println("lista de empresas ");
+								System.out.println("\nlista de empresas: ");
 								rep.lista_empresas();
-								System.out.println("\n ");
 								
+								// REGRA IGUALITARIA E PROPORCIONAL
+								System.out.println("------------------------------------------");
+								System.out.println("\nDivisão das despesas: ");
+								
+								
+								rend_pessoa = rep.soma_rendaPessoas();
+								rend_despesa = rep.soma_despesaTotal();
+								//System.out.println("\nSoma renda pessoas: " + rend_pessoa + "\n");
+								tot_pessoa = rep.numeroDePessoas();
+								
+								// REGRA IGUALITARIA
+								double resultadoI = (rend_despesa)/tot_pessoa;
+								
+								System.out.println("\nValor por Regra igualitaria: " + resultadoI);
+								//System.out.println("\nSoma despesas: " + rend_despesa);
+								
+								
+								//REGRA PROPORCIONAL (rend_individual/rend_pessoas)*rend_despesa
+								System.out.println("\nValor por Regra proporcional: \n");
+								System.out.println(rep.renda_indi(rend_despesa, rend_pessoa));
+								System.out.println("------------------------------------------");
 								
 							}
 							
