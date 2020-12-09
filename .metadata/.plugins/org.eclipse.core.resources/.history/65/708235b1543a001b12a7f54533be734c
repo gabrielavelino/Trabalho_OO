@@ -551,8 +551,6 @@ public class Console {
 								
 								System.out.println("lista de empresas ");
 								rep.lista_empresas();
-								System.out.println("\n ");
-								
 								
 							}
 							

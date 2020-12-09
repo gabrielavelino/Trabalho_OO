@@ -549,11 +549,6 @@ public class Console {
 								System.out.println("lista de despesas ");
 								rep.lista_despesas();
 								
-								System.out.println("lista de empresas ");
-								rep.lista_empresas();
-								System.out.println("\n ");
-								
-								
 							}
 							
 							// SAIR MENU CADASTROS 

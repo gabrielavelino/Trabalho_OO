@@ -11,6 +11,7 @@ public class Despesas {
 	int mes;
 	String categoriaDespesas;
 	double totalDespesa;
+	Empresas[] empresa;
 	
 	
 	
@@ -19,13 +20,32 @@ public class Despesas {
 		this.mes = mes;
 		this.categoriaDespesas = categoriaDespesas;
 		this.totalDespesa = totalDespesa;
+		empresa = new Empresas[0];
 		
 	}
+	
+	  public void cadastroempresa(Empresas categoria) {
+	        Empresas[] temp = new Empresas[empresa.length + 1];
 
+	        //copiar o vetor atual para um vetor temporario
+	        for (int i = 0; i < empresa.length; i++) {
+	            temp[i] = empresa[i];
+	        }
+
+	        // matricular o aluno na disciplina (= associar turma ao aluno a ser matriculado)
+	        temp[empresa.length] = categoria;
+
+	        //atualizar referencia de alunos
+	        empresa = temp;
+
+	    }
+	
 
 	public int getAno() {
 		return ano;
 	}
+
+
 
 	public int getMes() {
 		return mes;
@@ -38,6 +58,8 @@ public class Despesas {
 	public double getTotalDespesa() {
 		return totalDespesa;
 	}
+
+
 
 
 }

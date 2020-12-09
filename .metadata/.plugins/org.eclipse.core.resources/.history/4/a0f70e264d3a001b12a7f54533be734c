@@ -61,13 +61,11 @@ public class Console {
 		return retorno3;
 	}
 	
+	
 	void criarEmpresa() {
 	}
 	
-	void regraIgualitaria() {/*
-		int renda, custo;
-		renda = rep.rendaPessoa();
-		custo = r.custototal();*/
+	void regraIgualitaria() {
 	}
 	
 	void regraProporcional() {
@@ -82,6 +80,7 @@ public class Console {
 		listarepublica = new LinkedList<republica>();
 		
 		Console c = new Console();
+		Despesas d = null ;
 		/*
 		republica r = new republica("Delta");
 		c.cadastrarrepublica(r);
@@ -177,7 +176,6 @@ public class Console {
 							System.out.println("(5) cadastrar uma empresa.");
 							System.out.println("(6) Retirar Pessoas. ");
 							System.out.println("(7) Retirar despesas.");
-							System.out.println("(8) Ver status da republica.");
 							System.out.println("(0) voltar para o menu principal!");
 							
 							try {
@@ -315,8 +313,7 @@ public class Console {
 									}
 								
 
-
-								Despesas d = new Despesas(mes, ano, categoria, total);
+								d = new Despesas(mes, ano, categoria, total);
 								rep.cadastrarDespesas(d);
 								System.out.println("Despesa cadastrada\n\n");
 								
@@ -432,7 +429,8 @@ public class Console {
 							else if(selecionado1==5){
 								System.out.println("Digite o nome da empresa");
 								
-								String nomeempresa = sc.next();
+								String nomeempresa = sc.nextLine();
+								nomeempresa = sc.nextLine();
 								System.out.println("Digite o nome da subcategoria");
 								
 								String subcategoria = sc.nextLine();
@@ -460,6 +458,7 @@ public class Console {
 								
 								Empresas e = new Empresas(subcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
+								d.cadastroempresa(e);
 								System.out.println("Empresa cadastrada\n\n");
 							}
 							
@@ -542,22 +541,12 @@ public class Console {
 								}
 							}
 							
-							else if(selecionado1 == 8){	
-								System.out.println("lista de pessoas ");
-								rep.lista_pessoas();
-								
-								System.out.println("lista de despesas ");
-								rep.lista_despesas();
-								
-								System.out.println("lista de empresas ");
-								rep.lista_empresas();
-								System.out.println("\n ");
-								
-								
-							}
+						
 							
 							// SAIR MENU CADASTROS 
-							else if(selecionado1 == 0){								
+							else if(selecionado1 == 0){
+								d.toStringEmpresa132();
+								
 								break;
 							}
 							else{

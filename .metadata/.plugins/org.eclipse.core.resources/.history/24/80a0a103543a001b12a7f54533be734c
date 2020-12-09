@@ -209,40 +209,4 @@ public void lista_pessoas() {
 		}
 		
 	}
-
-public void lista_empresas() {
-	
-	
-	Iterator<Empresas> it = listaEmpresas.iterator();
-	while (it.hasNext()) {
-		Empresas a = it.next();
-		System.out.println("-Subcategoria: " + a.getSubCategoria() + " Empresa: " +a.getNomeEmpresa()+"Custo: "+a.getContaValor());
-	}
-	
-}
-
-public double rendaPessoa() {
-	double retorno = 0; 
-	
-	Iterator<Pessoas> it = listaPessoas.iterator();
-	while (it.hasNext()) {
-		Pessoas a = it.next();
-		retorno += a.getRendimento();
-	}
-	
-	return retorno;
-}
-
-public double custototal() {
-	double retorno = 0; 
-	
-	Iterator<Empresas> it = listaEmpresas.iterator();
-	while (it.hasNext()) {
-		Empresas a = it.next();
-		retorno += a.getContaValor();
-	}
-	
-	return retorno;
-}
-
 }

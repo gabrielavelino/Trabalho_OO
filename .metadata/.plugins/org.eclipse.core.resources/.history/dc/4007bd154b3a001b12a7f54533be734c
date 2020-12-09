@@ -11,6 +11,7 @@ public class Despesas {
 	int mes;
 	String categoriaDespesas;
 	double totalDespesa;
+	ArrayList<Empresas> categoria = new ArrayList<Empresas>();
 	
 	
 	
@@ -19,13 +20,16 @@ public class Despesas {
 		this.mes = mes;
 		this.categoriaDespesas = categoriaDespesas;
 		this.totalDespesa = totalDespesa;
+
 		
 	}
-
+	
 
 	public int getAno() {
 		return ano;
 	}
+
+
 
 	public int getMes() {
 		return mes;
