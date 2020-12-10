@@ -148,18 +148,7 @@ public class Console {
 					String nomeRepublica1;
 					while(true){
 						String nomeRepublica = sc.nextLine();
-						
-						 boolean repeat_republica = true;
-								while(repeat_republica){
-									nomeRepublica = sc.nextLine();
-									repeat_republica = false;
-									if(nomeRepublica.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite o nome novamente\n");
-										repeat_republica = true;
-									}
-									
-								}
-						 
+						nomeRepublica = sc.nextLine();
 						if(!c.verificar_republica_existente(nomeRepublica)){
 							nomeRepublica1 = nomeRepublica;
 							break;
@@ -224,16 +213,6 @@ public class Console {
 							if(selecionado1 == 1){
 								System.out.println("Digite o nome da nova pessoa");
 								String Nomepessoa = sc.nextLine();
-								boolean repeat_nome = true;
-								while(repeat_nome){
-									Nomepessoa = sc.nextLine();
-									repeat_nome = false;
-									if(Nomepessoa.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite o nome novamente\n");
-										repeat_nome = true;
-									}
-									
-								}
 								System.out.println("Digite o email da nova pessoa");
 								String Email;
 								//verificar email existente
@@ -351,18 +330,7 @@ public class Console {
 								
 								System.out.println("Digite a categoria");
 								categoria = sc.nextLine();
-								
-								boolean repeat_categoria = true;
-								while(repeat_categoria){
 								categoria = sc.nextLine();
-									repeat_categoria = false;
-									if(categoria.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite a categotia novamente\n");
-										repeat_categoria = true;
-									}
-									
-								}
-								 
 								System.out.println("Digite o custo total");
 								total = -1;
 								
@@ -511,30 +479,11 @@ public class Console {
 							else if(selecionado1==5){
 								System.out.println("Digite o nome da empresa");
 								
-								String nomeempresa = sc.nextLine();
-								boolean repeat_empresa = true;
-								while(repeat_empresa){
-								nomeempresa = sc.nextLine();
-									repeat_empresa = false;
-									if(nomeempresa.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite a empresa novamente\n");
-										repeat_empresa = true;
-									}
-									
-								}
+								String nomeempresa = sc.next();
 								System.out.println("Digite o nome da subcategoria");
 								
-								String nomesubcategoria = sc.nextLine();
-								boolean repeat_subcategoria = true;
-								while(repeat_subcategoria){
-								nomesubcategoria = sc.nextLine();
-									repeat_subcategoria = false;
-									if(nomesubcategoria.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite a subcategotia novamente\n");
-										repeat_subcategoria = true;
-									}
-									
-								}
+								String subcategoria = sc.nextLine();
+								subcategoria = sc.nextLine();
 								System.out.println("Digite o custo da empresa");
 								
 								double custo = -1;
@@ -556,7 +505,7 @@ public class Console {
 									}	
 									}
 								
-								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
+								Empresas e = new Empresas(subcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
 								System.out.println("Empresa cadastrada\n\n");
 							}

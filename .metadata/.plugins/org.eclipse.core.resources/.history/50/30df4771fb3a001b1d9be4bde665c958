@@ -524,12 +524,12 @@ public class Console {
 								}
 								System.out.println("Digite o nome da subcategoria");
 								
-								String nomesubcategoria = sc.nextLine();
+								String subcategoria = sc.nextLine();
 								boolean repeat_subcategoria = true;
 								while(repeat_subcategoria){
-								nomesubcategoria = sc.nextLine();
+								subcategoria = sc.nextLine();
 									repeat_subcategoria = false;
-									if(nomesubcategoria.equalsIgnoreCase("")){
+									if(subcategoria.equalsIgnoreCase("")){
 										System.out.println("campo vazio, Digite a subcategotia novamente\n");
 										repeat_subcategoria = true;
 									}
@@ -556,7 +556,7 @@ public class Console {
 									}	
 									}
 								
-								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
+								Empresas e = new Empresas(subcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
 								System.out.println("Empresa cadastrada\n\n");
 							}

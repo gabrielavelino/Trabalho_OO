@@ -556,7 +556,7 @@ public class Console {
 									}	
 									}
 								
-								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
+								Empresas e = new Empresas(subcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
 								System.out.println("Empresa cadastrada\n\n");
 							}

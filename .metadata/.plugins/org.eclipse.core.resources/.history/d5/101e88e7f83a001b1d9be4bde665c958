@@ -351,18 +351,7 @@ public class Console {
 								
 								System.out.println("Digite a categoria");
 								categoria = sc.nextLine();
-								
-								boolean repeat_categoria = true;
-								while(repeat_categoria){
 								categoria = sc.nextLine();
-									repeat_categoria = false;
-									if(categoria.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite a categotia novamente\n");
-										repeat_categoria = true;
-									}
-									
-								}
-								 
 								System.out.println("Digite o custo total");
 								total = -1;
 								
@@ -511,30 +500,11 @@ public class Console {
 							else if(selecionado1==5){
 								System.out.println("Digite o nome da empresa");
 								
-								String nomeempresa = sc.nextLine();
-								boolean repeat_empresa = true;
-								while(repeat_empresa){
-								nomeempresa = sc.nextLine();
-									repeat_empresa = false;
-									if(nomeempresa.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite a empresa novamente\n");
-										repeat_empresa = true;
-									}
-									
-								}
+								String nomeempresa = sc.next();
 								System.out.println("Digite o nome da subcategoria");
 								
-								String nomesubcategoria = sc.nextLine();
-								boolean repeat_subcategoria = true;
-								while(repeat_subcategoria){
-								nomesubcategoria = sc.nextLine();
-									repeat_subcategoria = false;
-									if(nomesubcategoria.equalsIgnoreCase("")){
-										System.out.println("campo vazio, Digite a subcategotia novamente\n");
-										repeat_subcategoria = true;
-									}
-									
-								}
+								String subcategoria = sc.nextLine();
+								subcategoria = sc.nextLine();
 								System.out.println("Digite o custo da empresa");
 								
 								double custo = -1;
@@ -556,7 +526,7 @@ public class Console {
 									}	
 									}
 								
-								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
+								Empresas e = new Empresas(subcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
 								System.out.println("Empresa cadastrada\n\n");
 							}

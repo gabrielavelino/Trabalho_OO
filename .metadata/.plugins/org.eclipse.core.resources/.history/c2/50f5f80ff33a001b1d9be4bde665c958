@@ -236,6 +236,19 @@ public String renda_indi(double rend_despesa, double rend_pessoa) {
 }
 
 
+public int numeroDePessoas() {
+	int total_pessoas = 0;	
+	Iterator<Pessoas> it = listaPessoas.iterator();
+	while (it.hasNext()) {
+		Pessoas a = it.next();
+		total_pessoas ++;
+	
+	}
+	
+	return total_pessoas;
+}
+
+
 public double soma_despesaTotal() {
 	double total_despesa = 0;	
 	Iterator<Despesas> it = listaDespesas.iterator();
@@ -248,17 +261,6 @@ public double soma_despesaTotal() {
 	return total_despesa;
 }
 
-public int numeroDePessoas() {
-	int total_pessoas = 0;	
-	Iterator<Pessoas> it = listaPessoas.iterator();
-	while (it.hasNext()) {
-		Pessoas a = it.next();
-		total_pessoas ++;
-	
-	}
-	
-	return total_pessoas;
-}
 
 public void lista_empresas() {
 	
