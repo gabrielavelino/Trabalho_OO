@@ -148,12 +148,10 @@ public class Console {
 					while(true){
 						String nomeRepublica = sc.nextLine();
 						nomeRepublica = sc.nextLine();
-						if(!c.verificar_republica_existente(nomeRepublica)){
+						if(c.verificar_republica_existente(nomeRepublica)){
 							nomeRepublica1 = nomeRepublica;
 							break;
 						}
-
-						System.out.println("Republica ja cadastrada. Tente outro nome");
 					}
 					republica r1 = new republica(nomeRepublica1);
 					c.cadastrarrepublica(r1);

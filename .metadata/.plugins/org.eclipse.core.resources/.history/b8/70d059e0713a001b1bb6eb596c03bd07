@@ -144,18 +144,9 @@ public class Console {
 				// CADASTRAR UMA NOVA REPUBLICA
 				if(selecionado == 1){
 					System.out.println("Digite o nome da nova republica");
-					String nomeRepublica1;
-					while(true){
-						String nomeRepublica = sc.nextLine();
-						nomeRepublica = sc.nextLine();
-						if(!c.verificar_republica_existente(nomeRepublica)){
-							nomeRepublica1 = nomeRepublica;
-							break;
-						}
-
-						System.out.println("Republica ja cadastrada. Tente outro nome");
-					}
-					republica r1 = new republica(nomeRepublica1);
+					String nomeRepublica = sc.nextLine();
+					nomeRepublica = sc.nextLine();
+					republica r1 = new republica(nomeRepublica);
 					c.cadastrarrepublica(r1);
 					System.out.println("Republica cadastrada!");
 				}
@@ -590,8 +581,8 @@ public class Console {
 								rep.lista_empresas();
 								
 								// REGRA IGUALITARIA E PROPORCIONAL
-								System.out.println(" ----------------------------------------");
-								System.out.println("Divisão das despesas: ");
+								System.out.println("------------------------------------------");
+								System.out.println("\nDivisão das despesas: ");
 								
 								
 								rend_pessoa = rep.soma_rendaPessoas();
@@ -609,7 +600,7 @@ public class Console {
 								//REGRA PROPORCIONAL (rend_individual/rend_pessoas)*rend_despesa
 								System.out.println("\nValor por Regra proporcional: \n");
 								System.out.println(rep.renda_indi(rend_despesa, rend_pessoa));
-								System.out.println(" ----------------------------------------");
+								System.out.println("------------------------------------------");
 								
 							}
 							

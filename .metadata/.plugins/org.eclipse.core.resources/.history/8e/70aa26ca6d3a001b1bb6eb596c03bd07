@@ -122,13 +122,13 @@ public class Console {
 		int selecionado = -1;
 			while(true){
 				System.out.println("\n");	
-				System.out.println(" ----------------------------------------");
-				System.out.println("|        O que voce deseja fazer?        |");
+				System.out.println("-----------------------------------------");
+				System.out.println("| O que voce deseja fazer?               |");
 				System.out.println("| (1) cadastrar uma republica.           |");
-				System.out.println("| (2) Escolher uma republica.            |");
+				System.out.println("| (2) ver lista de republicas.           |");
 				System.out.println("| (3) Retirar republica.                 |");
 				System.out.println("| (0) para sair do progama!              |");
-				System.out.println(" ----------------------------------------");
+				System.out.println("-----------------------------------------");
 				
 				try {
 				selecionado =  Integer.parseInt(sc.next());;
@@ -144,18 +144,9 @@ public class Console {
 				// CADASTRAR UMA NOVA REPUBLICA
 				if(selecionado == 1){
 					System.out.println("Digite o nome da nova republica");
-					String nomeRepublica1;
-					while(true){
-						String nomeRepublica = sc.nextLine();
-						nomeRepublica = sc.nextLine();
-						if(!c.verificar_republica_existente(nomeRepublica)){
-							nomeRepublica1 = nomeRepublica;
-							break;
-						}
-
-						System.out.println("Republica ja cadastrada. Tente outro nome");
-					}
-					republica r1 = new republica(nomeRepublica1);
+					String nomeRepublica = sc.nextLine();
+					nomeRepublica = sc.nextLine();
+					republica r1 = new republica(nomeRepublica);
 					c.cadastrarrepublica(r1);
 					System.out.println("Republica cadastrada!");
 				}
@@ -185,8 +176,8 @@ public class Console {
 							
 							while(true){
 							// DENTRO DA REPUBLICA ESCOLHIDA
-							System.out.println(" ----------------------------------------");
-							System.out.println("|        O que voce deseja fazer?        |");
+							System.out.println("-----------------------------------------");
+							System.out.println("| O que voce deseja fazer?               |");
 							System.out.println("| (1) cadastrar uma pessoa.              |");
 							System.out.println("| (2) ver lista de pessoas.              |");
 							System.out.println("| (3) cadastrar uma despesa.             |");
@@ -196,7 +187,7 @@ public class Console {
 							System.out.println("| (7) Retirar despesas.                  |");
 							System.out.println("| (8) Ver status da republica.           |");
 							System.out.println("| (0) voltar para o menu principal!      |");
-							System.out.println(" ----------------------------------------");
+							System.out.println("-----------------------------------------");
 							try {
 								selecionado1 =  Integer.parseInt(sc.next());;
 								
@@ -213,16 +204,7 @@ public class Console {
 								String Nomepessoa = sc.nextLine();
 								Nomepessoa = sc.nextLine();
 								System.out.println("Digite o email da nova pessoa");
-								String Email;
-								//verificar email existente
-								while(true){
-									Email = sc.next();
-									if(!rep.verificar_pessoa_existente(Email)){
-										break;
-									}
-									System.out.println("Email ja cadastrado. Tente outro email");
-								
-								}
+								String Email = sc.next();
 								System.out.println("Digite o genero da nova pessoa");
 								String genero = sc.next();
 								System.out.println("Digite a idade da nova pessoa");
@@ -278,14 +260,9 @@ public class Console {
 							}
 							// CADASTRO DA DESPESA
 							else if(selecionado1 == 3){
-								int mes, ano;
-								String categoria;
-								double total;
-								while(true){
-								
 								System.out.println("Digite o mes");
-								mes = -1;
-								ano = -1;
+								int mes = -1;
+								int ano = -1;
 								
 								boolean repeat_mes = true;
 								while(repeat_mes){
@@ -323,10 +300,10 @@ public class Console {
 									}
 								
 								System.out.println("Digite a categoria");
-								categoria = sc.nextLine();
+								String categoria = sc.nextLine();
 								categoria = sc.nextLine();
 								System.out.println("Digite o custo total");
-								total = -1;
+								double total = -1;
 								
 								boolean repeat_total = true;
 								while(repeat_total){
@@ -343,13 +320,8 @@ public class Console {
 										repeat_total = true;
 										
 									}	
-								}
-								if(!rep.verificar_despesa_existente(categoria, mes, ano)){
-									break;
-								}
-
-								System.out.println("Despesa ja cadastrada nesta data. cadastre novamente");
-							}
+									}
+								
 
 
 								Despesas d = new Despesas(mes, ano, categoria, total);
@@ -590,8 +562,8 @@ public class Console {
 								rep.lista_empresas();
 								
 								// REGRA IGUALITARIA E PROPORCIONAL
-								System.out.println(" ----------------------------------------");
-								System.out.println("Divisão das despesas: ");
+								System.out.println("------------------------------------------");
+								System.out.println("\nDivisão das despesas: ");
 								
 								
 								rend_pessoa = rep.soma_rendaPessoas();
@@ -609,7 +581,7 @@ public class Console {
 								//REGRA PROPORCIONAL (rend_individual/rend_pessoas)*rend_despesa
 								System.out.println("\nValor por Regra proporcional: \n");
 								System.out.println(rep.renda_indi(rend_despesa, rend_pessoa));
-								System.out.println(" ----------------------------------------");
+								System.out.println("------------------------------------------");
 								
 							}
 							

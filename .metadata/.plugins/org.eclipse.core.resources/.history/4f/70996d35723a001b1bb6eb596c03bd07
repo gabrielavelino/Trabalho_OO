@@ -152,8 +152,6 @@ public class Console {
 							nomeRepublica1 = nomeRepublica;
 							break;
 						}
-
-						System.out.println("Republica ja cadastrada. Tente outro nome");
 					}
 					republica r1 = new republica(nomeRepublica1);
 					c.cadastrarrepublica(r1);

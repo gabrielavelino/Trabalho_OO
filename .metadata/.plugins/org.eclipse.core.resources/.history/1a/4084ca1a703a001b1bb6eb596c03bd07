@@ -50,7 +50,7 @@ public class republica {
 		Iterator<Pessoas> it = listaPessoas.iterator();
 		while (it.hasNext()) {
 			Pessoas a = it.next();
-			retorno += "!!MORADOR!!" + "\nNOME: " + a.getNome()+ "\nE-MAIL: " + a.getEmail() + "\nGENERO: " + a.getGenero() + "\nIDADE: " + a.getIdade() + "\nRENDA: R$" + a.getRendimento() + "\n\n";
+			retorno += "!!MORADOR!!" + "\nNOME: " + a.getNome() + "\nGENERO: " + a.getGenero() + "\nIDADE: " + a.getIdade() + "\nRENDA: R$" + a.getRendimento() + "\nE-MAIL: " + a.getEmail() + "\n\n";
 		}
 		
 		return retorno;
