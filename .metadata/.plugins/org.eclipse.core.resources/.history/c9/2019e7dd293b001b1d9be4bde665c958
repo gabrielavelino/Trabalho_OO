@@ -296,8 +296,6 @@ public class Console {
 								
 								Pessoas p = new Pessoas(Nomepessoa, Email, genero, idade, rendimento);
 								rep.cadastrarPessoas(p);
-								p.txt_pessoa();
-								
 								System.out.println("Pessoa cadastrada\n\n");
 							}
 							//LISTA DE PESSOAS

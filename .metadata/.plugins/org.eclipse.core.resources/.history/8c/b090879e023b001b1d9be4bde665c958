@@ -188,24 +188,6 @@ public class republica {
 		
 		return retorno3;
 	}
-	
-	public boolean relacionar_despesa_empresa(String teste, int t1, int t2, double custo) {
-		boolean retorno3 = false; 
-		double aux;
-		
-		Iterator<Despesas> it = listaDespesas.iterator();
-		while (it.hasNext()) {
-			Despesas b = it.next();
-			if(b.getCategoriaDespesa().equalsIgnoreCase(teste) && b.getMes()==t1 && b.getAno()==t2){
-				aux = b.getTotalDespesa();
-				aux += custo;
-				b.totalDespesa = aux;
-				retorno3 = true;
-			}
-		}
-		
-		return retorno3;
-	}
 
 	public void lista_despesas() {
 		

@@ -296,8 +296,6 @@ public class Console {
 								
 								Pessoas p = new Pessoas(Nomepessoa, Email, genero, idade, rendimento);
 								rep.cadastrarPessoas(p);
-								p.txt_pessoa();
-								
 								System.out.println("Pessoa cadastrada\n\n");
 							}
 							//LISTA DE PESSOAS
@@ -312,7 +310,7 @@ public class Console {
 							else if(selecionado1 == 3){
 								int mes, ano;
 								String categoria;
-								//double total;
+								double total;
 								while(true){
 								
 								System.out.println("Digite o mes");
@@ -514,14 +512,15 @@ public class Console {
 							FINAL COMENTARIO  DA EMPRESA  */	
 							}
 
-							///////////////////////////CAMPO EM BRANCO//////////////////////////////////
+							///////////////////////////CAMPO EM BRANCO E VERIFICAR EMPRESAS EXISTENTES//////////////////////////////////
+							///////////////////////////RELACIONAR O CUSTO COM AS EMPRESAS//////////////////////////////////
 							
 							// CADASTRO DAS EMPRESAS
 							else if(selecionado1==5){
 								if(rep.verificar_lista_vaziad() == false){
 									System.out.println("Nenhuma despesa cadastrada ainda\n");
 								}
-								else{
+								else
 								System.out.println(rep.toString2());
 							
 								System.out.println("Esta empresa esta relacionada com qual categoria?");
@@ -611,7 +610,7 @@ public class Console {
 								///////////////////////////CAMPO EM BRANCO//////////////////////////////////
 								System.out.println("Digite o nome da subcategoria");
 								
-								String nomesubcategoria = null;
+								String nomesubcategoria = sc.nextLine();
 								boolean repeat_subcategoria = true;
 								while(repeat_subcategoria){
 								nomesubcategoria = sc.nextLine();
@@ -652,10 +651,9 @@ public class Console {
 								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
 								System.out.println("Empresa cadastrada\n\n");
-								}
 							}
 							
-							
+					
 							
 							//RETIRAR PESSOA
 							else if(selecionado1 == 6) {

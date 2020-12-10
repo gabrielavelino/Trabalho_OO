@@ -296,8 +296,6 @@ public class Console {
 								
 								Pessoas p = new Pessoas(Nomepessoa, Email, genero, idade, rendimento);
 								rep.cadastrarPessoas(p);
-								p.txt_pessoa();
-								
 								System.out.println("Pessoa cadastrada\n\n");
 							}
 							//LISTA DE PESSOAS
@@ -312,7 +310,7 @@ public class Console {
 							else if(selecionado1 == 3){
 								int mes, ano;
 								String categoria;
-								//double total;
+								double total;
 								while(true){
 								
 								System.out.println("Digite o mes");
@@ -367,7 +365,7 @@ public class Console {
 									}
 									
 								}
-								/* 
+								 
 								System.out.println("Digite o custo total");
 								total = -1;
 								
@@ -392,11 +390,10 @@ public class Console {
 										
 									}	
 								}
-								*/
 								if(!rep.verificar_despesa_existente(categoria, mes, ano)){
 									break;
 								}
-		
+
 								System.out.println("Despesa ja cadastrada nesta data. cadastre novamente");
 							}
 
@@ -514,86 +511,15 @@ public class Console {
 							FINAL COMENTARIO  DA EMPRESA  */	
 							}
 
-							///////////////////////////CAMPO EM BRANCO//////////////////////////////////
+							///////////////////////////CAMPO EM BRANCO E VERIFICAR EMPRESAS EXISTENTES//////////////////////////////////
+							///////////////////////////RELACIONAR O CUSTO COM AS EMPRESAS//////////////////////////////////
 							
 							// CADASTRO DAS EMPRESAS
 							else if(selecionado1==5){
-								if(rep.verificar_lista_vaziad() == false){
-									System.out.println("Nenhuma despesa cadastrada ainda\n");
-								}
-								else{
-								System.out.println(rep.toString2());
-							
-								System.out.println("Esta empresa esta relacionada com qual categoria?");
-
-								String categoria;
-								int mes;
-								int ano;
-								
-								while(true){	
-									
-
-									System.out.println("Digite a categoria");
-									categoria = sc.nextLine();
-									
-									boolean repeat_categoria = true;
-									while(repeat_categoria){
-									categoria = sc.nextLine();
-										repeat_categoria = false;
-										if(categoria.equalsIgnoreCase("")){
-											System.out.println("campo vazio, Digite a categotia novamente\n");
-											repeat_categoria = true;
-										}
-										
-									}
-									
-									System.out.println("Digite o mes");
-									mes = -1;
-									ano = -1;
-									
-									boolean repeat_mes = true;
-									while(repeat_mes){
-										try {
-											mes =  Integer.parseInt(sc.next());;
-											repeat_mes = false;
-											
-											}catch(NumberFormatException e){
-											
-												System.out.println("Operador invalido... Digite o mes novamente\n");
-												System.out.println("exemplo : 05\n");
-												
-												mes = -1;
-												repeat_mes = true;
-												
-											}
-										}
-
-									System.out.println("Digite o ano");
-									boolean repeat_ano = true;
-									while(repeat_ano){
-										try {
-											ano =  Integer.parseInt(sc.next());;
-											repeat_ano = false;
-											
-											}catch(NumberFormatException e){
-											
-												System.out.println("Operador invalido... Digite o ano novamente\n");
-												System.out.println("exemplo : 2020\n");
-												
-												ano = -1;
-												repeat_ano = true;
-												
-											}
-										}
-									
-
-									if(rep.verificar_despesa_existente(categoria, mes, ano)){
-										break;
-									}
-
-									System.out.println("Despesa nao existente");
-								}
-								
+								System.out.println("Esta empresa esta relacionada com qual categoria");
+								int mes = sc.nextInt();
+								int ano = sc.nextInt();
+								String categoria = sc.next();
 								
 								System.out.println("Digite o nome da empresa");
 								
@@ -611,7 +537,7 @@ public class Console {
 								///////////////////////////CAMPO EM BRANCO//////////////////////////////////
 								System.out.println("Digite o nome da subcategoria");
 								
-								String nomesubcategoria = null;
+								String nomesubcategoria = sc.nextLine();
 								boolean repeat_subcategoria = true;
 								while(repeat_subcategoria){
 								nomesubcategoria = sc.nextLine();
@@ -632,11 +558,6 @@ public class Console {
 									custo=  Double.parseDouble(sc.next());;
 
 									repeat_custo = false;
-									if(custo<0){
-										repeat_custo = true;
-										System.out.println("Operador invalido... Digite o rendimento novamente!");
-										System.out.println("exemplo : 130.50\n");
-									}
 									
 									}catch(NumberFormatException e){
 									
@@ -647,15 +568,13 @@ public class Console {
 										
 									}	
 									}
-							
 								rep.relacionar_despesa_empresa(categoria, mes, ano, custo);
 								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
 								System.out.println("Empresa cadastrada\n\n");
-								}
 							}
 							
-							
+					
 							
 							//RETIRAR PESSOA
 							else if(selecionado1 == 6) {

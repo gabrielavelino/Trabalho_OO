@@ -28,8 +28,11 @@ public class Pessoas {
 		try {
 			FileWriter fw = new FileWriter("Pessoas.txt");
 			PrintWriter pw = new PrintWriter(fw);
-			
-			pw.println("Nome: " + this.nome + "; Email: " + this.email + "; Rendimento: " + this.rendimento);
+			pw.println(this.nome);
+			pw.println(this.email);
+			pw.println(this.genero);
+			pw.println(this.idade);
+			pw.println(this.rendimento);
 			pw.flush();
 			pw.close();
 			fw.close();

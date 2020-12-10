@@ -150,7 +150,7 @@ public class Console {
 					System.out.println("Digite o nome da nova republica");
 					String nomeRepublica1;
 					while(true){
-						String nomeRepublica = sc.nextLine();
+						String nomeRepublica = null;
 						
 						 boolean repeat_republica = true;
 								while(repeat_republica){
@@ -296,8 +296,6 @@ public class Console {
 								
 								Pessoas p = new Pessoas(Nomepessoa, Email, genero, idade, rendimento);
 								rep.cadastrarPessoas(p);
-								p.txt_pessoa();
-								
 								System.out.println("Pessoa cadastrada\n\n");
 							}
 							//LISTA DE PESSOAS
@@ -312,7 +310,7 @@ public class Console {
 							else if(selecionado1 == 3){
 								int mes, ano;
 								String categoria;
-								//double total;
+								double total;
 								while(true){
 								
 								System.out.println("Digite o mes");

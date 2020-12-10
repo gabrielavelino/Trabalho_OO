@@ -199,7 +199,6 @@ public class republica {
 			if(b.getCategoriaDespesa().equalsIgnoreCase(teste) && b.getMes()==t1 && b.getAno()==t2){
 				aux = b.getTotalDespesa();
 				aux += custo;
-				b.totalDespesa = aux;
 				retorno3 = true;
 			}
 		}
