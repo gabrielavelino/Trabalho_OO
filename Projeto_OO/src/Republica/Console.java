@@ -123,11 +123,12 @@ public class Console {
 			while(true){
 				System.out.println("\n");	
 				System.out.println(" ----------------------------------------");
-				System.out.println("|        O que voce deseja fazer?        |");
-				System.out.println("| (1) cadastrar uma republica.           |");
+				System.out.println("|       O QUE VOCE DESEJA FAZER?       	 |");
+				System.out.println("|                                    	 |");
+				System.out.println("| (1) Cadastrar uma republica.           |");
 				System.out.println("| (2) Escolher uma republica.            |");
 				System.out.println("| (3) Retirar republica.                 |");
-				System.out.println("| (0) para sair do progama!              |");
+				System.out.println("| (0) Para sair do progama!              |");
 				System.out.println(" ----------------------------------------");
 				
 				try {
@@ -186,16 +187,17 @@ public class Console {
 							while(true){
 							// DENTRO DA REPUBLICA ESCOLHIDA
 							System.out.println(" ----------------------------------------");
-							System.out.println("|        O que voce deseja fazer?        |");
-							System.out.println("| (1) cadastrar uma pessoa.              |");
-							System.out.println("| (2) ver lista de pessoas.              |");
-							System.out.println("| (3) cadastrar uma despesa.             |");
-							System.out.println("| (4) ver lista de despesas.             |");
-							System.out.println("| (5) cadastrar uma empresa.             |");
+							System.out.println("|        O QUE VOCE DESEJA FAZER?        |");
+							System.out.println("|                                    	 |");
+							System.out.println("| (1) Cadastrar uma pessoa.              |");
+							System.out.println("| (2) Ver lista de pessoas.              |");
+							System.out.println("| (3) Cadastrar uma despesa.             |");
+							System.out.println("| (4) Ver lista de despesas.             |");
+							System.out.println("| (5) Cadastrar uma empresa.             |");
 							System.out.println("| (6) Retirar Pessoas.                   |");
 							System.out.println("| (7) Retirar despesas.                  |");
 							System.out.println("| (8) Ver status da republica.           |");
-							System.out.println("| (0) voltar para o menu principal!      |");
+							System.out.println("| (0) Voltar para o menu principal!      |");
 							System.out.println(" ----------------------------------------");
 							try {
 								selecionado1 =  Integer.parseInt(sc.next());;
