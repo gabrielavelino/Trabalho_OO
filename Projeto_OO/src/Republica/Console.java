@@ -296,6 +296,8 @@ public class Console {
 								
 								Pessoas p = new Pessoas(Nomepessoa, Email, genero, idade, rendimento);
 								rep.cadastrarPessoas(p);
+								
+								// PERSISTENCIA PESSOAS 
 								p.txt_pessoa();
 								
 								System.out.println("Pessoa cadastrada\n\n");
@@ -403,6 +405,10 @@ public class Console {
 
 								Despesas d = new Despesas(mes, ano, categoria, 0);
 								rep.cadastrarDespesas(d);
+								
+								// PERSISTENCIA DESPESAS
+								//d.txt_despesas();
+								
 								System.out.println("Despesa cadastrada\n\n");
 								
 								/*System.out.println("(1) cadastrar empresa: ");
@@ -443,7 +449,7 @@ public class Console {
 								}*/
 							}
 							
-							// ENTRA NO MENU DAS EMPRESAS / VER DESPESAS
+							// VER DESPESAS
 							else if(selecionado1 == 4){	
 								if(rep.verificar_lista_vaziad() == false){
 									System.out.println("Nenhuma despesa cadastrada ainda\n");
@@ -629,7 +635,7 @@ public class Console {
 								boolean repeat_custo = true;
 								while(repeat_custo){
 								try {
-									custo=  Double.parseDouble(sc.next());;
+									custo = Double.parseDouble(sc.next());;
 
 									repeat_custo = false;
 									if(custo<0){
@@ -651,6 +657,8 @@ public class Console {
 								rep.relacionar_despesa_empresa(categoria, mes, ano, custo);
 								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
+								Despesas d = new Despesas(mes, ano, categoria, custo);
+								d.txt_despesas(nomesubcategoria);
 								System.out.println("Empresa cadastrada\n\n");
 								}
 							}
@@ -763,7 +771,7 @@ public class Console {
 									System.out.println("Nenhuma pessoa foi cadastrada\n");
 								}
 								else{
-									System.out.println("\nValor por Regra igualitaria: " + resultadoI);
+									System.out.println("\nValor por Regra igualitaria: \nR$" + resultadoI);
 									//System.out.println("\nSoma despesas: " + rend_despesa);
 								
 								

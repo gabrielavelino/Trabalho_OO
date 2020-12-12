@@ -246,7 +246,7 @@ public String renda_indi(double rend_despesa, double rend_pessoa) {
 	Iterator<Pessoas> it = listaPessoas.iterator();
 	while (it.hasNext()) {
 		Pessoas a = it.next();
-		retorno += "Nome: " +  a.getNome() + " // total a pagar: " + (a.getRendimento()/rend_pessoa)*rend_despesa + "\n";
+		retorno += "Nome: " +  a.getNome() + " // total a pagar: R$" + (a.getRendimento()/rend_pessoa)*rend_despesa + "\n";
 	
 	}
 	

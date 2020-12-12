@@ -1,5 +1,5 @@
 package Republica;
-
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,10 +26,11 @@ public class Pessoas {
 	
 	public String txt_pessoa(){
 		try {
-			FileWriter fw = new FileWriter("Pessoas.txt");
+			//File arquivo = new File(Path);
+			FileWriter fw = new FileWriter("C:\\Users\\Dell\\Desktop\\EclipseJava\\git\\Trabalho_OO\\Projeto_OO\\Pessoas\\Pessoas.txt",true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("Nome: " + this.nome + "; Email: " + this.email + "; Rendimento: " + this.rendimento);
+			pw.println("<Nome: " + this.nome + ">; <Email: " + this.email + ">; <Rendimento: R$" + this.rendimento + ">");
 			pw.flush();
 			pw.close();
 			fw.close();
