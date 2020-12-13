@@ -1,12 +1,15 @@
 package Republica;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class republica {
 	
@@ -31,6 +34,55 @@ public class republica {
 		
 	}
 	
+	public  void ler_pessoas(String nomeRep) throws IOException {
+		
+		Scanner s = null; 
+		BufferedReader entrada = null; 
+		republica rep = new republica(nomeRep);
+		
+		try {
+			//criacao do buffer de linhas do arquivo
+			entrada = new BufferedReader(new FileReader(nomeRep + ".txt"));
+			System.out.println("Buffer criado!!! ");
+
+			//Leitura, linha por linha, e quebra em diferentes dados
+			String linha; 
+			
+			while ((linha = entrada.readLine()) != null) {
+				//Quebrar a linha em partes de registro (=diferentes dados)
+				s = new Scanner(linha);
+				s.useDelimiter(";");
+				System.out.println(s);
+		
+			
+
+				String nome = s.next();
+				String email = s.next();
+				String genero = s.next();
+				int idade = s.nextInt();
+				double rendimento = s.nextDouble();
+				
+				Pessoas a = new Pessoas(nome, email, genero, idade, rendimento);//criei o objeto pessoa
+				rep.cadastrarPessoas(a);
+				
+				a.txt_pessoa(nomeRep);	
+			}
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		
+		} finally {
+			if (entrada != null) {
+				entrada.close();}
+			}
+
+	
+	}
 	
 	
 	
