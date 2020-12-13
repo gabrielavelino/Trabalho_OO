@@ -312,5 +312,41 @@ public double custototal() {
 	
 	return retorno;
 }
+	/////////////////////////////////////// ARRUMAR REGRA PROPORCIONAL////////////////////////////////////////////////////////
+public void data_despesa(int n_pessoas, double r_pessoas) {
+	int despesa_mes[] = new int[1000];
+	int despesa_ano[] = new int[1000];
+	double despesa_total[] = new double[1000];
+	double soma[] = new double[1000];
+	int j, k, i=1;
+	Iterator<Despesas> it = listaDespesas.iterator();
+	while (it.hasNext()) {
+		Despesas a = it.next();
+		despesa_mes[i] = a.getMes();
+		despesa_ano[i] = a.getAno();
+		despesa_total[i] = a.getTotalDespesa();
+		i++;
+	}
+	for(j=1;j<i;j++){
+		for(k=1;k<i;k++){
+			if(despesa_mes[j]==despesa_mes[k] && despesa_ano[j]==despesa_ano[k]){
+				soma[j] += despesa_total[k];
+				despesa_total[k]=0;
+			}
+		}
+	}
+	for(int l=1;l<i;l++){
+		if(soma[l]!=0){
+			System.out.println("*************" + despesa_mes[l] + "/" + despesa_ano[l] + "*************");
+			System.out.println(" REGRA IGUALITARIA:");
+		System.out.println("R$" + soma[l]/n_pessoas + "\n");
+		System.out.println(" REGRA PROPORCIONAL:");
+		System.out.println(renda_indi(soma[l], r_pessoas));
+		}
+	}
+}
+
+
+
 
 }

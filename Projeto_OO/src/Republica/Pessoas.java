@@ -27,7 +27,7 @@ public class Pessoas {
 	public String txt_pessoa(){
 		try {
 			//File arquivo = new File(Path);
-			FileWriter fw = new FileWriter("C:\\Users\\Dell\\Desktop\\EclipseJava\\git\\Trabalho_OO\\Projeto_OO\\Pessoas\\Pessoas.txt",true);
+			FileWriter fw = new FileWriter("Pessoas\\Pessoas.txt",true);
 			PrintWriter pw = new PrintWriter(fw);
 			
 			pw.println("<Nome: " + this.nome + ">; <Email: " + this.email + ">; <Rendimento: R$" + this.rendimento + ">");

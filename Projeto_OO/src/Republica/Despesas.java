@@ -28,7 +28,7 @@ public class Despesas {
 	public String txt_despesas(String subcat){
 		try {
 			
-			FileWriter fw = new FileWriter("C:\\Users\\Dell\\Desktop\\EclipseJava\\git\\Trabalho_OO\\Projeto_OO\\Despesas\\Despesas_"+ this.mes + "_" + this.ano +".txt",true);
+			FileWriter fw = new FileWriter("Despesas\\Despesas_"+ this.mes + "_" + this.ano +".txt",true);
 			PrintWriter pw = new PrintWriter(fw);
 			
 	

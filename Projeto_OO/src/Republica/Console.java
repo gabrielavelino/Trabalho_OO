@@ -764,22 +764,23 @@ public class Console {
 								tot_pessoa = rep.numeroDePessoas();
 								
 								// REGRA IGUALITARIA
-								double resultadoI = (rend_despesa)/tot_pessoa;
+								
+								//double resultadoI = (rend_despesa)/tot_pessoa;
 								
 								if(rep.numeroDePessoas() == 0){
 									System.out.println("Impossivel mostrar as regras");
 									System.out.println("Nenhuma pessoa foi cadastrada\n");
 								}
 								else{
-									System.out.println("\nValor por Regra igualitaria: \nR$" + resultadoI);
-									//System.out.println("\nSoma despesas: " + rend_despesa);
+									//System.out.println("\nValor por Regra igualitaria: \nR$" + resultadoI);
 								
 								
 									//REGRA PROPORCIONAL (rend_individual/rend_pessoas)*rend_despesa
-									System.out.println("\nValor por Regra proporcional: \n");
-									System.out.println(rep.renda_indi(rend_despesa, rend_pessoa));
+									//System.out.println("\nValor por Regra proporcional: \n");
+									//System.out.println(rep.renda_indi(rend_despesa, rend_pessoa));
+									rep.data_despesa(tot_pessoa, rend_pessoa);
 									System.out.println(" ----------------------------------------");
-								}
+									}
 							}
 							
 							// SAIR MENU CADASTROS 

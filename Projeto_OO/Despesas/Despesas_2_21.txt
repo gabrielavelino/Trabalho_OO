@@ -1,0 +1,2 @@
+<Categoria: tele> ; <Subcategoria: d> ; <Valor: R$152.0>
+<Categoria: resi> ; <Subcategoria: d> ; <Valor: R$18.0>
