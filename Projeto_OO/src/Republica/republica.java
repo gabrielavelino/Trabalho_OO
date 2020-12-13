@@ -1,5 +1,9 @@
 package Republica;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +23,17 @@ public class republica {
 		listaEmpresas = new LinkedList<Empresas>();
 				
 	}
+	
+	
+	public void pastaRep (String repNome){
+		new File("Republica\\"+repNome).mkdir();
+		
+		
+	}
+	
+	
+	
+	
 	
 	public String getNomeRepublica() {
 		return nomeRepublica;

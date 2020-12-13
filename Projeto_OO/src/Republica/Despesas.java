@@ -25,10 +25,10 @@ public class Despesas {
 		
 	}
 
-	public String txt_despesas(String subcat){
+	public String txt_despesas(String subcat, String nomeRep){
 		try {
 			
-			FileWriter fw = new FileWriter("Despesas\\Despesas_"+ this.mes + "_" + this.ano +".txt",true);
+			FileWriter fw = new FileWriter("Republica\\"+ nomeRep  + "\\"+"Despesas_"+ this.mes + "_" + this.ano +".txt",true);
 			PrintWriter pw = new PrintWriter(fw);
 			
 	

@@ -1,5 +1,7 @@
 package Republica;
 import java.util.List;
+import java.io.File;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -73,15 +75,39 @@ public class Console {
 	void regraProporcional() {
 	}
 
+	public void lista_pastaRep() {
+        // Creates an array in which we will store the names of files and directories
+        String[] pathnames;
+
+        // Creates a new File instance by converting the given pathname string
+        // into an abstract pathname
+        File f = new File("Republica\\");
+
+        // Populates the array with names of files and directories
+        pathnames = f.list();
+
+        // For each pathname in the pathnames array
+        for (String pathname : pathnames) {
+            // Print the names of files and directories
+            //System.out.println("Republica: " + pathname);
+            republica r2 = new republica(pathname);
+            c.cadastrarrepublica(r2);
+        }
+        System.out.println("\n");
+	}
+	
+	
+	static Console c = new Console();
+	
 	static Scanner sc = new Scanner(System.in);
 	
 	//-------------------------------------------- FUNÇAO MAIN ---------------------------------------------------------
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		listarepublica = new LinkedList<republica>();
 		
-		Console c = new Console();
+		//Console c = new Console();
 		
 		double rend_pessoa = 0;
 		double rend_despesa = 0;
@@ -120,6 +146,7 @@ public class Console {
 		System.out.println("----- BEM VINDO AO PROGRAMA DE CADASTRO DE REPUBLICAS ------");
 		
 		int selecionado = -1;
+		c.lista_pastaRep();
 			while(true){
 				System.out.println("\n");	
 				System.out.println(" ----------------------------------------");
@@ -172,10 +199,14 @@ public class Console {
 					}
 					republica r1 = new republica(nomeRepublica1);
 					c.cadastrarrepublica(r1);
+					
+					r1.pastaRep(nomeRepublica1);
+					
 					System.out.println("Republica cadastrada!");
 				}
 				// IMPRIMINDO LISTA DE REPUBLICAS CADASTRADAS
 				else if(selecionado == 2){
+					
 					Iterator<republica> it = listarepublica.iterator();	
 					//CASO NAO TENHA NENHUMA REPUBLICA CADASTRADA
 					if(it.hasNext() == false){
@@ -184,12 +215,22 @@ public class Console {
 
 					else{
 					System.out.println(c.toString3());
+					
 					System.out.println("Escolha a republica: ");
 					String Nome = sc.nextLine();
 					Nome = sc.nextLine();
+					String repNome = Nome;
 					
 					//MENU CADASTROS DE PESSOAS E DESPESAS
 					int selecionado1 = -1;
+					if(!c.verificar_republica_existente(Nome)){
+						System.out.println("Republica não encontrada!!");
+					}
+					
+					
+					
+					//txt.ler_pessoas(repNome);
+					
 					while (it.hasNext()) {
 
 						republica rep = it.next();
@@ -199,8 +240,10 @@ public class Console {
 						if(rep.getNomeRepublica().equalsIgnoreCase(Nome)){
 							
 							while(true){
+							
 							// DENTRO DA REPUBLICA ESCOLHIDA
-							System.out.println(" ----------------------------------------");
+							
+							System.out.println("------------------------------------------");
 							System.out.println("|        O QUE VOCE DESEJA FAZER?        |");
 							System.out.println("|                                    	 |");
 							System.out.println("| (1) Cadastrar uma pessoa.              |");
@@ -211,8 +254,10 @@ public class Console {
 							System.out.println("| (6) Retirar Pessoas.                   |");
 							System.out.println("| (7) Retirar despesas.                  |");
 							System.out.println("| (8) Ver status da republica.           |");
+						//	System.out.println("| (9) Cadastrar uma pessoa por txt.      |");
 							System.out.println("| (0) Voltar para o menu principal!      |");
-							System.out.println(" ----------------------------------------");
+							System.out.println("------------------------------------------");
+							
 							try {
 								selecionado1 =  Integer.parseInt(sc.next());;
 								
@@ -298,7 +343,7 @@ public class Console {
 								rep.cadastrarPessoas(p);
 								
 								// PERSISTENCIA PESSOAS 
-								p.txt_pessoa();
+								p.txt_pessoa(repNome);
 								
 								System.out.println("Pessoa cadastrada\n\n");
 							}
@@ -658,7 +703,7 @@ public class Console {
 								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
 								Despesas d = new Despesas(mes, ano, categoria, custo);
-								d.txt_despesas(nomesubcategoria);
+								d.txt_despesas(nomesubcategoria,repNome);
 								System.out.println("Empresa cadastrada\n\n");
 								}
 							}
@@ -793,14 +838,7 @@ public class Console {
 							
 							}
 						}
-						
-						else {
-							
-							System.out.println("Nome invalido!!\n");
-							
-						}
-						
-						
+					
 						
 						
 					}
@@ -838,7 +876,7 @@ public class Console {
 				
 				// SAIR DO PROGRAMA
 				else if(selecionado == 0){
-					System.out.println("!!VOLTE SEMPRE!!");
+					System.out.println("!!YESS PEPE,THANK YOU !!");
 					break;
 					
 				}
