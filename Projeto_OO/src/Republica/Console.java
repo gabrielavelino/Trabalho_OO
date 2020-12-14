@@ -1,7 +1,9 @@
 package Republica;
 import java.util.List;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -63,16 +65,22 @@ public class Console {
 		return retorno3;
 	}
 	
-	void criarEmpresa() {
-	}
-	
-	void regraIgualitaria() {/*
-		int renda, custo;
-		renda = rep.rendaPessoa();
-		custo = r.custototal();*/
-	}
-	
-	void regraProporcional() {
+	public String txt_pessoa_em_branco(String repNome){
+		try {
+			//File arquivo = new File(Path);
+		
+			FileWriter fw = new FileWriter("Republica\\" + repNome+"\\" + "Pessoas.txt");
+			PrintWriter pw = new PrintWriter(fw);
+			pw.println("");
+			pw.flush();
+			pw.close();
+			fw.close();
+			
+		} catch (IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+		return "cadastrado com sucesso";
 	}
 
 	public void lista_pastaRep() {
@@ -145,6 +153,12 @@ public class Console {
 		//ATE AQUI
 		System.out.println("----- BEM VINDO AO PROGRAMA DE CADASTRO DE REPUBLICAS ------");
 		
+		////////////////////////////////////////////////////////////RETIRAR REPUBLICA////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////RETIRAR PESSOAS////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////RETIRAR DESPESAS////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////CADASTRO REPUBLICA(FAZER O TXT)////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////RETIRAR REPUBLICA////////////////////////////////////////////////////
+		
 		int selecionado = -1;
 		c.lista_pastaRep();
 			while(true){
@@ -199,8 +213,8 @@ public class Console {
 					}
 					republica r1 = new republica(nomeRepublica1);
 					c.cadastrarrepublica(r1);
-					
 					r1.pastaRep(nomeRepublica1);
+					c.txt_pessoa_em_branco(nomeRepublica1);
 					
 					System.out.println("Republica cadastrada!");
 				}
@@ -228,12 +242,14 @@ public class Console {
 					}
 					
 					
-					
 					//txt.ler_pessoas(repNome);
-					
+					//republica r3 = new republica(repNome);
+					//r3.ler_pessoas(repNome);
 					while (it.hasNext()) {
 
 						republica rep = it.next();
+						rep.ler_despesas(repNome);
+						rep.ler_pessoas(repNome);
 						
 						//verificar e comparar strings
 						
@@ -452,7 +468,7 @@ public class Console {
 								rep.cadastrarDespesas(d);
 								
 								// PERSISTENCIA DESPESAS
-								//d.txt_despesas();
+								//d.txt_despesas(, repNome);
 								
 								System.out.println("Despesa cadastrada\n\n");
 								
@@ -496,6 +512,7 @@ public class Console {
 							
 							// VER DESPESAS
 							else if(selecionado1 == 4){	
+
 								if(rep.verificar_lista_vaziad() == false){
 									System.out.println("Nenhuma despesa cadastrada ainda\n");
 								}
@@ -702,6 +719,7 @@ public class Console {
 								rep.relacionar_despesa_empresa(categoria, mes, ano, custo);
 								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
+
 								Despesas d = new Despesas(mes, ano, categoria, custo);
 								d.txt_despesas(nomesubcategoria,repNome);
 								System.out.println("Empresa cadastrada\n\n");

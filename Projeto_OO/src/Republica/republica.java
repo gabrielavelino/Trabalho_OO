@@ -42,35 +42,35 @@ public class republica {
 		
 		try {
 			//criacao do buffer de linhas do arquivo
-			entrada = new BufferedReader(new FileReader(nomeRep + ".txt"));
-			System.out.println("Buffer criado!!! ");
+			entrada = new BufferedReader(new FileReader("Republica\\" + nomeRep+"\\" + "Pessoas.txt"));
 
-			//Leitura, linha por linha, e quebra em diferentes dados
-			String linha; 
-			
-			while ((linha = entrada.readLine()) != null) {
-				//Quebrar a linha em partes de registro (=diferentes dados)
-				s = new Scanner(linha);
-				s.useDelimiter(";");
-				System.out.println(s);
-		
-			
-
-				String nome = s.next();
-				String email = s.next();
-				String genero = s.next();
-				int idade = s.nextInt();
-				double rendimento = s.nextDouble();
-				
-				Pessoas a = new Pessoas(nome, email, genero, idade, rendimento);//criei o objeto pessoa
-				rep.cadastrarPessoas(a);
-				
-				a.txt_pessoa(nomeRep);	
-			}
-			
-			
-			
-			
+			//Leitura, linha por linha, e quebra em diferentes dados 
+	
+				BufferedReader buffRead = new BufferedReader(new FileReader("Republica\\" + nomeRep+"\\" + "Pessoas.txt"));
+		        String linha = "";
+		        int i=0;
+		        while (true) {
+		            if (linha != null) {
+		            	if(i!=0){
+		            	//s = new Scanner(linha);
+		            	//s.useDelimiter(";");
+		            	String[] linha_atual = linha.split(";");
+		            	String nome = linha_atual[0].substring(1,linha_atual[0].length()-1);
+						String email= linha_atual[1].substring(1,linha_atual[1].length()-1);
+						String genero = linha_atual[2].substring(1,linha_atual[2].length()-1);
+						int idade = Integer.parseInt(linha_atual[3].substring(1,linha_atual[3].length()-1));
+						double rendimento = Double.parseDouble(linha_atual[4].substring(1,linha_atual[4].length()-1));
+						Pessoas a = new Pessoas(nome, email, genero, idade, rendimento);//criei o objeto pessoa
+						if(!verificar_pessoa_existente(email))
+						cadastrarPessoas(a);
+		            	}
+		            	i++;
+		            	
+		            } else
+		                break;
+		            linha = buffRead.readLine();
+		        }
+		        buffRead.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,10 +81,102 @@ public class republica {
 				entrada.close();}
 			}
 
-	
+	/*
+	 * public void lista_pastaRep() {
+        // Creates an array in which we will store the names of files and directories
+        String[] pathnames;
+
+        // Creates a new File instance by converting the given pathname string
+        // into an abstract pathname
+        File f = new File("Republica\\" + nomeRep+"\\");
+
+        // Populates the array with names of files and directories
+        pathnames = f.list();
+
+        // For each pathname in the pathnames array
+        for (String pathname : pathnames) {
+            // Print the names of files and directories
+            String[] linha_atual = linha.split("_");
+		    int mes = linha_atual[1].substring(1,linha_atual[1].length()-1);
+		    int ano = linha_atual[2].substring(1,linha_atual[2].length());
+        }
+	}
+	 */
+		
 	}
 	
+	public  void ler_despesas(String nomeRep) throws IOException {
+		
+		Scanner s = null; 
+		BufferedReader entrada = null; 
+		republica rep = new republica(nomeRep);
+		// Creates an array in which we will store the names of files and directories
+        String[] pathnames;
+
+        // Creates a new File instance by converting the given pathname string
+        // into an abstract pathname
+        File f = new File("Republica\\" + nomeRep+"\\");
+
+        // Populates the array with names of files and directories
+        pathnames = f.list();
+        String linha1 = "";
+        // For each pathname in the pathnames array
+        for (String pathname : pathnames) {
+
+            // Print the names of files and directories
+            //System.out.println("Republica: " + pathname);2
+        	if(pathname.substring(0,8).equalsIgnoreCase("Despesas")){
+        	String[] arquivo_atual = pathname.split("_");
+        	int mes = Integer.parseInt(arquivo_atual[1].substring(0,arquivo_atual[1].length()));
+        	int ano = Integer.parseInt(arquivo_atual[2].substring(0,arquivo_atual[2].length()-4));
+        	//System.out.println(arquivo_atual[2].substring(0,arquivo_atual[2].length()-4));
+        	
+            
+		    try {
+
+				//criacao do buffer de linhas do arquivo
+				entrada = new BufferedReader(new FileReader("Republica\\" + nomeRep+"\\" + "Despesas_" + mes + "_" +ano +".txt"));
+
+				//Leitura, linha por linha, e quebra em diferentes dados 
+		
+					BufferedReader buffRead = new BufferedReader(new FileReader("Republica\\" + nomeRep+"\\" + "Despesas_" + mes + "_" +ano +".txt"));
+			        String linha = "";
+
+			        int i=0;
+			        while (true) {
+
+			            if (linha != null) {
+			            	if(i!=0){
+			            	//s = new Scanner(linha);
+			            	//s.useDelimiter(";");
+			            	String[] linha_atual = linha.split(";");
+			            	String categoria = linha_atual[0].substring(1,linha_atual[0].length()-1);
+							String subcat= linha_atual[1].substring(1,linha_atual[1].length()-1);
+							double tot_despesa = Double.parseDouble(linha_atual[2].substring(1,linha_atual[2].length()-1));
+							Despesas d = new Despesas(mes, ano, categoria, tot_despesa);//criei o objeto pessoa
+							if(!verificar_despesa_existente(categoria, mes, ano))
+							cadastrarDespesas(d);
+			            }i++;
+			            	
+			            } else
+			                break;
+			            linha = buffRead.readLine();
+			        }
+			        buffRead.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			
+			
+			} finally {
+				if (entrada != null) {
+					entrada.close();}
+				}
+        	}
+        }
+		
 	
+	}
 	
 	
 	public String getNomeRepublica() {

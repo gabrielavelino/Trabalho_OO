@@ -33,7 +33,7 @@ public class Despesas {
 			
 	
 			
-			pw.println("<Categoria: " + this.categoriaDespesas + "> ; " + "<Subcategoria: " + subcat + "> ; " + "<Valor: R$" + this.totalDespesa + ">");
+			pw.println("<" + this.categoriaDespesas + ">;" + "<" + subcat + ">;" + "<" + this.totalDespesa + ">");
 			pw.flush();
 			pw.close();
 			fw.close();
