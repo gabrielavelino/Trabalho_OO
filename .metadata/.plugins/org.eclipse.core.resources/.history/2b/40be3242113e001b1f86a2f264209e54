@@ -247,14 +247,12 @@ public class Console {
 					while (it.hasNext()) {
 
 						republica rep = it.next();
+						rep.ler_despesas(repNome);
+						rep.ler_pessoas(repNome);
 						
 						//verificar e comparar strings
 						
 						if(rep.getNomeRepublica().equalsIgnoreCase(Nome)){
-							
-
-							rep.ler_despesas(repNome);
-							rep.ler_pessoas(repNome);
 							
 							while(true){
 							

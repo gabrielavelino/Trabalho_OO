@@ -58,8 +58,8 @@ public class republica {
 		            	String nome = linha_atual[0].substring(1,linha_atual[0].length()-1);
 						String email= linha_atual[1].substring(1,linha_atual[1].length()-1);
 						String genero = linha_atual[2].substring(1,linha_atual[2].length()-1);
-						System.out.println(linha_atual[3].substring(1,linha_atual[3].length()-1));
 						int idade = Integer.parseInt(linha_atual[3].substring(1,linha_atual[3].length()-1));
+						System.out.println(idade);
 						double rendimento = Double.parseDouble(linha_atual[4].substring(1,linha_atual[4].length()-1));
 						Pessoas a = new Pessoas(nome, email, genero, idade, rendimento);//criei o objeto pessoa
 						if(!verificar_pessoa_existente(email))

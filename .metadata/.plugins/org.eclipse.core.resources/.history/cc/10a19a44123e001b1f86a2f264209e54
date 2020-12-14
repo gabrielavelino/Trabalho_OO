@@ -34,7 +34,7 @@ public class Pessoas {
 			FileWriter fw = new FileWriter("Republica\\" + repNome+"\\" + "Pessoas.txt",true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("<" + this.nome + ">;<" + this.email + ">;<" + this.genero + ">;<" + this.idade + ">;<" + this.rendimento + ">");
+			pw.println("<" + this.nome + ">; <" + this.email + ">; <" + this.genero + ">; <" + this.idade + ">; <" + this.rendimento + ">");
 			pw.flush();
 			pw.close();
 			fw.close();
