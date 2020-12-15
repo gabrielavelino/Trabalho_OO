@@ -1,11 +1,14 @@
 package Republica;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -55,15 +58,17 @@ public class republica {
 		            	//s = new Scanner(linha);
 		            	//s.useDelimiter(";");
 		            	String[] linha_atual = linha.split(";");
+						//System.out.println(linha_atual[0].substring(0,1));
 		            	String nome = linha_atual[0].substring(1,linha_atual[0].length()-1);
 						String email= linha_atual[1].substring(1,linha_atual[1].length()-1);
 						String genero = linha_atual[2].substring(1,linha_atual[2].length()-1);
-						System.out.println(linha_atual[3].substring(1,linha_atual[3].length()-1));
+						//System.out.println(linha_atual[3].substring(1,linha_atual[3].length()-1));
 						int idade = Integer.parseInt(linha_atual[3].substring(1,linha_atual[3].length()-1));
 						double rendimento = Double.parseDouble(linha_atual[4].substring(1,linha_atual[4].length()-1));
 						Pessoas a = new Pessoas(nome, email, genero, idade, rendimento);//criei o objeto pessoa
 						if(!verificar_pessoa_existente(email))
 						cadastrarPessoas(a);
+		            	
 		            	}
 		            	i++;
 		            	
@@ -73,8 +78,9 @@ public class republica {
 		        }
 		        buffRead.close();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (java.lang.NumberFormatException e) {
+			System.out.println("Algum campo vazio no Pessoas.txt");
+			System.out.println("Corrija");
 		
 		
 		} finally {
@@ -105,6 +111,99 @@ public class republica {
 	 */
 		
 	}
+	public String retorna_nome(String teste){
+		String nome = null;
+		
+		Iterator<Pessoas> it = listaPessoas.iterator();
+		while (it.hasNext()) {
+			Pessoas b = it.next();
+			if(b.getEmail().equalsIgnoreCase(teste))
+			nome = b.getNome();
+			
+		}
+		return nome;
+	}
+	public String retorna_genero(String teste){
+		String nome = null;
+		
+		Iterator<Pessoas> it = listaPessoas.iterator();
+		while (it.hasNext()) {
+			Pessoas b = it.next();
+			if(b.getEmail().equalsIgnoreCase(teste))
+			nome = b.getGenero();
+			
+		}
+		return nome;
+	}
+	public int retorna_idade(String teste){
+		int nome = 0;
+		
+		Iterator<Pessoas> it = listaPessoas.iterator();
+		while (it.hasNext()) {
+			Pessoas b = it.next();
+			if(b.getEmail().equalsIgnoreCase(teste))
+			nome = b.getIdade();
+			
+		}
+		return nome;
+	}
+	public double retorna_rendimento(String teste){
+		double nome = 0;
+		
+		Iterator<Pessoas> it = listaPessoas.iterator();
+		while (it.hasNext()) {
+			Pessoas b = it.next();
+			if(b.getEmail().equalsIgnoreCase(teste))
+			nome = b.getRendimento();
+			
+		}
+		return nome;
+	}
+	
+	public  void retirar_pessoa_txt(String nomeRep, String email_tirado, String nome, String genero, int idade, double rendimento) throws IOException {
+		
+		Scanner s = null; 
+		BufferedReader entrada = null; 
+		republica rep = new republica(nomeRep);
+		
+		File fil = new File("Republica\\" + nomeRep+"\\" + "Pessoas.txt");
+		
+		try{
+			FileReader fr = new FileReader(fil);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String linha = br.readLine();
+			ArrayList<String> salvar = new ArrayList(); 
+			
+			while(linha != null){
+				if(!(linha.equalsIgnoreCase("<" + nome + ">;<" + email_tirado + ">;<" + genero + ">;<" + idade + ">;<" + rendimento + ">"))){
+					salvar.add(linha);
+				}
+				linha = br.readLine();
+			}
+			br.close();
+			fr.close();
+			FileWriter fw2 = new FileWriter(fil,true);
+			fw2.close();
+			
+			FileWriter fw = new FileWriter(fil);
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			for(int i=0; i<salvar.size();i++){
+				bw.write(salvar.get(i));
+				bw.newLine();
+			}
+			
+			bw.close();
+			fw.close();
+			
+		}catch(IOException ex){
+			
+		}
+		
+	}
+	
+	
 	
 	public  void ler_despesas(String nomeRep) throws IOException {
 		
@@ -165,9 +264,125 @@ public class republica {
 			        }
 			        buffRead.close();
 				
-			} catch (Exception e) {
-				e.printStackTrace();
+			} catch (java.lang.NumberFormatException e) {
+				System.out.println("Algum campo vazio no Despesas.txt");
+				System.out.println("Corrija");
 			
+			} finally {
+				if (entrada != null) {
+					entrada.close();}
+				}
+        	}
+        }
+		
+	
+	}
+	/*
+public  void retirar_despesas_txt(String nomeRep, String categoria, String subcat,int mes, int ano) throws IOException {
+		
+		Scanner s = null; 
+		BufferedReader entrada = null; 
+		republica rep = new republica(nomeRep);
+		
+		File fil = new File("Republica\\" + nomeRep+"\\" + "Despesas.txt");
+		
+		try{
+			FileReader fr = new FileReader(fil);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String linha = br.readLine();
+			ArrayList<String> salvar = new ArrayList(); 
+			
+			while(linha != null){
+				if(!(linha.equalsIgnoreCase("<" + nome + ">;<" + email_tirado + ">;<" + genero + ">;<" + idade + ">;<" + rendimento + ">"))){
+					salvar.add(linha);
+				}
+				linha = br.readLine();
+			}
+			br.close();
+			fr.close();
+			FileWriter fw2 = new FileWriter(fil,true);
+			fw2.close();
+			
+			FileWriter fw = new FileWriter(fil);
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			for(int i=0; i<salvar.size();i++){
+				bw.write(salvar.get(i));
+				bw.newLine();
+			}
+			
+			bw.close();
+			fw.close();
+			
+		}catch(IOException ex){
+			
+		}
+		
+	}
+	*/
+public  void ler_empresas(String nomeRep) throws IOException {
+		
+		Scanner s = null; 
+		BufferedReader entrada = null; 
+		republica rep = new republica(nomeRep);
+		// Creates an array in which we will store the names of files and directories
+        String[] pathnames;
+
+        // Creates a new File instance by converting the given pathname string
+        // into an abstract pathname
+        File f = new File("Republica\\" + nomeRep+"\\");
+
+        // Populates the array with names of files and directories
+        pathnames = f.list();
+        String linha1 = "";
+        // For each pathname in the pathnames array
+        for (String pathname : pathnames) {
+
+            // Print the names of files and directories
+            //System.out.println("Republica: " + pathname);2
+        	if(pathname.substring(0,8).equalsIgnoreCase("Empresas")){
+        	String[] arquivo_atual = pathname.split("_");
+        	int mes = Integer.parseInt(arquivo_atual[1].substring(0,arquivo_atual[1].length()));
+        	int ano = Integer.parseInt(arquivo_atual[2].substring(0,arquivo_atual[2].length()-4));
+        	//System.out.println(arquivo_atual[2].substring(0,arquivo_atual[2].length()-4));
+        	
+            
+		    try {
+
+				//criacao do buffer de linhas do arquivo
+				entrada = new BufferedReader(new FileReader("Republica\\" + nomeRep+"\\" + "Empresas_" + mes + "_" +ano +".txt"));
+
+				//Leitura, linha por linha, e quebra em diferentes dados 
+		
+					BufferedReader buffRead = new BufferedReader(new FileReader("Republica\\" + nomeRep+"\\" + "Empresas_" + mes + "_" +ano +".txt"));
+			        String linha = "";
+
+			        int i=0;
+			        while (true) {
+
+			            if (linha != null) {
+			            	if(i!=0){
+			            	//s = new Scanner(linha);
+			            	//s.useDelimiter(";");
+			            	String[] linha_atual = linha.split(";");
+			            	String subcategoria = linha_atual[0].substring(1,linha_atual[0].length()-1);
+							String empresa= linha_atual[1].substring(1,linha_atual[1].length()-1);
+							double custo = Double.parseDouble(linha_atual[2].substring(1,linha_atual[2].length()-1));
+							Empresas e = new Empresas(subcategoria, empresa, custo);//criei o objeto pessoa
+							if(!verificar_empresa_existente(subcategoria, empresa))
+							cadastrarEmpresas(e);
+			            }i++;
+			            	
+			            } else
+			                break;
+			            linha = buffRead.readLine();
+			        }
+			        buffRead.close();
+				
+			} catch (java.lang.NumberFormatException e) {
+				System.out.println("Algum campo vazio no Empresas.txt");
+				System.out.println("Corrija");
 			
 			} finally {
 				if (entrada != null) {
@@ -327,6 +542,21 @@ public class republica {
 		while (it.hasNext()) {
 			Despesas b = it.next();
 			if(b.getCategoriaDespesa().equalsIgnoreCase(teste) && b.getMes()==t1 && b.getAno()==t2)
+			retorno3 = true;
+			
+		}
+		
+		return retorno3;
+	}
+	
+	public boolean verificar_empresa_existente(String teste, String teste1) {
+		boolean retorno3 = false; 
+		
+		
+		Iterator<Empresas> it = listaEmpresas.iterator();
+		while (it.hasNext()) {
+			Empresas b = it.next();
+			if(b.getSubCategoria().equalsIgnoreCase(teste) && b.getNomeEmpresa().equalsIgnoreCase(teste1))
 			retorno3 = true;
 			
 		}

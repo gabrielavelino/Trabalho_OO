@@ -1,0 +1,2 @@
+<telecomunicacao>;<internet>;<59.9>
+<residencia>;<luz>;<80.0>

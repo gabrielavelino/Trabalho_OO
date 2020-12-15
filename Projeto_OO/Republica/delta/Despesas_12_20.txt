@@ -1,2 +1,0 @@
-<tele>;<internet>;<59.90>
-<resi>;<telefone>;<25.0>

@@ -71,7 +71,6 @@ public class Console {
 		
 			FileWriter fw = new FileWriter("Republica\\" + repNome+"\\" + "Pessoas.txt");
 			PrintWriter pw = new PrintWriter(fw);
-			pw.println("");
 			pw.flush();
 			pw.close();
 			fw.close();
@@ -104,6 +103,18 @@ public class Console {
         System.out.println("\n");
 	}
 	
+	public void deletar_pasta(String republica_retirada){
+		File index = new File("Republica\\" + republica_retirada);
+		String[]entries = index.list();
+		for(String s: entries){
+
+		    File currentFile = new File(index.getPath(),s);
+		    currentFile.delete();
+			
+			}
+			index.delete();
+		
+	}
 	
 	static Console c = new Console();
 	
@@ -189,8 +200,8 @@ public class Console {
 				if(selecionado == 1){
 					System.out.println("Digite o nome da nova republica");
 					String nomeRepublica1;
+					String nomeRepublica = sc.nextLine();
 					while(true){
-						String nomeRepublica = sc.nextLine();
 						
 						 boolean repeat_republica = true;
 								while(repeat_republica){
@@ -252,10 +263,9 @@ public class Console {
 						
 						if(rep.getNomeRepublica().equalsIgnoreCase(Nome)){
 							
-
 							rep.ler_despesas(repNome);
 							rep.ler_pessoas(repNome);
-							
+							rep.ler_empresas(repNome);
 							while(true){
 							
 							// DENTRO DA REPUBLICA ESCOLHIDA
@@ -321,6 +331,11 @@ public class Console {
 									idade =  Integer.parseInt(sc.next());;
 									repeat_idade = false;
 									
+									if(idade<0){
+										repeat_idade = true;
+										System.out.println("Operador invalido... Digite o rendimento novamente!");
+										System.out.println("exemplo : 21\n");
+									}
 									}catch(NumberFormatException e){
 									
 										System.out.println("Operador invalido... Digite a idade novamente\n");
@@ -388,7 +403,11 @@ public class Console {
 									try {
 										mes =  Integer.parseInt(sc.next());;
 										repeat_mes = false;
-										
+										if(mes<0 || mes >12){
+											repeat_mes = true;
+											System.out.println("Operador invalido... Digite o rendimento novamente!");
+											System.out.println("exemplo : 05\n");
+										}
 										}catch(NumberFormatException e){
 										
 											System.out.println("Operador invalido... Digite o mes novamente\n");
@@ -406,7 +425,11 @@ public class Console {
 									try {
 										ano =  Integer.parseInt(sc.next());;
 										repeat_ano = false;
-										
+										if(ano<0){
+											repeat_ano = true;
+											System.out.println("Operador invalido... Digite o rendimento novamente!");
+											System.out.println("exemplo : 2020\n");
+										}
 										}catch(NumberFormatException e){
 										
 											System.out.println("Operador invalido... Digite o ano novamente\n");
@@ -625,7 +648,11 @@ public class Console {
 										try {
 											mes =  Integer.parseInt(sc.next());;
 											repeat_mes = false;
-											
+											if(mes<0 || mes >12){
+												repeat_mes = true;
+												System.out.println("Operador invalido... Digite o rendimento novamente!");
+												System.out.println("exemplo : 05\n");
+											}
 											}catch(NumberFormatException e){
 											
 												System.out.println("Operador invalido... Digite o mes novamente\n");
@@ -643,7 +670,11 @@ public class Console {
 										try {
 											ano =  Integer.parseInt(sc.next());;
 											repeat_ano = false;
-											
+											if(ano<0 ){
+												repeat_ano = true;
+												System.out.println("Operador invalido... Digite o rendimento novamente!");
+												System.out.println("exemplo : 2020\n");
+											}
 											}catch(NumberFormatException e){
 											
 												System.out.println("Operador invalido... Digite o ano novamente\n");
@@ -706,6 +737,11 @@ public class Console {
 										System.out.println("Operador invalido... Digite o rendimento novamente!");
 										System.out.println("exemplo : 130.50\n");
 									}
+									if(custo<0){
+										repeat_custo = true;
+										System.out.println("Operador invalido... Digite o rendimento novamente!");
+										System.out.println("exemplo : 130.50\n");
+									}
 									
 									}catch(NumberFormatException e){
 									
@@ -720,7 +756,7 @@ public class Console {
 								rep.relacionar_despesa_empresa(categoria, mes, ano, custo);
 								Empresas e = new Empresas(nomesubcategoria, nomeempresa, custo);
 								rep.cadastrarEmpresas(e);
-
+								e.txt_empresas(repNome, mes, ano);
 								Despesas d = new Despesas(mes, ano, categoria, custo);
 								d.txt_despesas(nomesubcategoria,repNome);
 								System.out.println("Empresa cadastrada\n\n");
@@ -745,6 +781,12 @@ public class Console {
 										System.out.println("Pessoa nao encontrada!\n");
 									}
 									else{
+										String nome = rep.retorna_nome(email_tirado);
+										String genero = rep.retorna_genero(email_tirado);
+										int idade = rep.retorna_idade(email_tirado);
+										double rendimento = rep.retorna_rendimento(email_tirado);
+										//System.out.println(nome+genero+idade+rendimento);
+										rep.retirar_pessoa_txt(repNome, email_tirado, nome, genero, idade, rendimento);
 										rep.retirarPessoa(email_tirado);
 										System.out.println("Pessoa retirada!\n");
 									}
@@ -800,6 +842,7 @@ public class Console {
 										System.out.println("Despesa nao encontrada!\n");
 									}
 									else{
+										//rep.retirar_despesas_txt(repNome, email_tirado, nome, genero, idade, rendimento);
 										rep.retirarDespesa(categoria_retirado,mes_retirado,ano_retirado);
 										System.out.println("Despesa retirada!\n");
 									}
@@ -885,7 +928,15 @@ public class Console {
 							System.out.println("Republica nao encontrada!\n");
 						}
 						else{
-							c.retirarRepublica(rep_tirado);
+							int i=0;
+							 c.deletar_pasta(rep_tirado);
+							 try{
+							 c.retirarRepublica(rep_tirado);
+							 }catch(java.util.ConcurrentModificationException e){
+									System.out.println("Republica retirada!\n");
+								 i++;
+							 }
+							 if(i==0)
 							System.out.println("Republica retirada!\n");
 						}
 					}
